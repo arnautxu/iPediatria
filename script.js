@@ -54,34 +54,58 @@ links?.addEventListener('click', (e) => {
 // SPLIT TEXT — Word reveal on headings tagged .word-reveal
 // ============================================================
 document.querySelectorAll('.word-reveal').forEach((el) => {
-  // Only split if there are no child elements (simple text node)
-  const processNode = (node) => {
+  let wi = 0;
+  const wrapWords = (node, inheritedEl) => {
     if (node.nodeType === 3) {
       const text = node.textContent;
+      if (!text.trim()) return;
       const frag = document.createDocumentFragment();
-      const words = text.split(/(\s+)/);
-      let wi = 0;
-      words.forEach((w) => {
-        if (/^\s+$/.test(w)) {
-          frag.appendChild(document.createTextNode(w));
-        } else if (w.length) {
-          const outer = document.createElement('span');
-          outer.className = 'word';
-          outer.style.setProperty('--wi', wi++);
-          const inner = document.createElement('span');
-          inner.textContent = w;
-          outer.appendChild(inner);
-          frag.appendChild(outer);
+      const parts = text.split(/(\s+)/);
+      parts.forEach((p) => {
+        if (!p.length) return;
+        if (/^\s+$/.test(p)) {
+          frag.appendChild(document.createTextNode(p));
+          return;
         }
+        const outer = document.createElement('span');
+        outer.className = 'word';
+        outer.style.setProperty('--wi', wi++);
+        const inner = document.createElement('span');
+        inner.textContent = p;
+        // If the word came from inside an element with a gradient (e.g. <em>),
+        // copy the gradient styles onto the inner span so background-clip: text
+        // keeps working even though we introduced inline-block wrappers.
+        if (inheritedEl) {
+          const cs = getComputedStyle(inheritedEl);
+          if (cs.webkitTextFillColor === 'rgba(0, 0, 0, 0)' ||
+              cs.backgroundClip === 'text' || cs.webkitBackgroundClip === 'text') {
+            inner.style.backgroundImage = cs.backgroundImage;
+            inner.style.webkitBackgroundClip = 'text';
+            inner.style.backgroundClip = 'text';
+            inner.style.webkitTextFillColor = 'transparent';
+            inner.style.color = 'transparent';
+            inner.style.fontStyle = cs.fontStyle;
+            inner.style.fontWeight = cs.fontWeight;
+          }
+        }
+        outer.appendChild(inner);
+        frag.appendChild(outer);
       });
       node.parentNode.replaceChild(frag, node);
     } else if (node.nodeType === 1 && !node.classList.contains('word')) {
-      // recurse into children (e.g. <em>)
-      [...node.childNodes].forEach(processNode);
+      const currentEl = (node.tagName === 'EM' || node.tagName === 'STRONG') ? node : inheritedEl;
+      [...node.childNodes].forEach((c) => wrapWords(c, currentEl));
     }
   };
-  [...el.childNodes].forEach(processNode);
+  [...el.childNodes].forEach((c) => wrapWords(c, null));
 });
+
+// Safety net: if for any reason .word-reveal elements never get .in (e.g.
+// observer race or browser without IO), force-reveal after 1.5s so the site
+// is never stuck with hidden words.
+setTimeout(() => {
+  document.querySelectorAll('.word-reveal:not(.in)').forEach((el) => el.classList.add('in'));
+}, 1500);
 
 // ============================================================
 // REVEAL on scroll (multiple flavours)

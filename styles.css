@@ -1469,21 +1469,23 @@ ul, ol { list-style: none; }
 /* --- Word-by-word reveal on titles --- */
 .word-reveal .word {
   display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  padding-bottom: .08em;
+  vertical-align: baseline;
 }
 .word-reveal .word > span {
   display: inline-block;
-  transform: translateY(110%) rotate(4deg);
+  transform: translateY(40%);
   opacity: 0;
-  transition: transform 1s cubic-bezier(.22,.9,.28,1), opacity .8s;
+  transition: transform .9s cubic-bezier(.22,.9,.28,1), opacity .7s;
 }
 .word-reveal.in .word > span {
-  transform: translateY(0) rotate(0);
+  transform: translateY(0);
   opacity: 1;
-  transition-delay: calc(var(--wi, 0) * 60ms);
+  transition-delay: calc(var(--wi, 0) * 55ms);
 }
+/* Fallback: if reveal never fires (e.g. element already in view before observer
+   attaches, or obscure layout), titles must still be readable. */
+.word-reveal.in .word > span,
+.no-js .word-reveal .word > span { opacity: 1; transform: none; }
 
 /* --- Split char reveal (for eyebrows) --- */
 .char-reveal span {
