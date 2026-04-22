@@ -31,7 +31,7 @@
 
   /* ── Type ──
      Myriad Pro = tipografia corporativa; Inter = fallback grotesca */
-  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: var(--font-sans);
   --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -332,8 +332,8 @@ ul, ol { list-style: none; }
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 48px);
   display: grid;
-  grid-template-columns: 1.35fr .8fr;
-  gap: clamp(40px, 6vw, 80px);
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(40px, 6vw, 72px);
   align-items: start;
   position: relative;
 }
@@ -408,27 +408,13 @@ ul, ol { list-style: none; }
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 14px;
-  padding: 20px 0 20px 16px;
+  align-items: stretch;
+  gap: 16px;
+  padding: 8px 0 0;
   overflow: visible;
 }
 
-.big-amp {
-  position: absolute;
-  bottom: -60px;
-  right: -10px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(140px, 18vw, 260px);
-  line-height: .85;
-  color: var(--magenta);
-  opacity: .06;
-  pointer-events: none;
-  user-select: none;
-  font-weight: 400;
-  z-index: 0;
-}
+.big-amp { display: none; }
 
 .glass-card {
   position: relative;
@@ -454,7 +440,6 @@ ul, ol { list-style: none; }
 
 .hero-card {
   padding: 22px;
-  transform: translateX(12px);
 }
 .hero-card-head {
   display: flex; align-items: center; gap: 10px;
@@ -513,8 +498,7 @@ ul, ol { list-style: none; }
   display: flex; align-items: center; gap: 12px;
   padding: 14px 20px 14px 14px;
   border-radius: var(--r-pill);
-  align-self: flex-start;
-  transform: translateX(-4px);
+  align-self: stretch;
 }
 .pill-card .pill-ico {
   width: 44px; height: 44px; border-radius: 50%;
@@ -533,8 +517,7 @@ ul, ol { list-style: none; }
   border-radius: var(--r-pill);
   font-size: 13px; font-weight: 500;
   color: var(--ink-2);
-  align-self: flex-end;
-  transform: translateX(8px);
+  align-self: flex-start;
 }
 .mini-card svg { width: 15px; height: 15px; color: var(--cyan); }
 
