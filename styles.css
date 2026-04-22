@@ -239,9 +239,14 @@ ul { list-style: none; margin: 0; padding: 0; }
   animation: pulse 2s infinite;
 }
 .display {
-  font-size: clamp(38px,6vw,72px);
-  font-weight: 700; letter-spacing: -.03em; line-height: 1.04;
-  margin: 18px 0 18px; color: var(--ink-2);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700; letter-spacing: -.03em; line-height: 1.1;
+  margin: 14px 0 12px; color: var(--ink-2);
+}
+.hero-sub {
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 600; color: var(--ink-2);
+  margin: 0 0 10px; line-height: 1.4; opacity: .85;
 }
 .grad-text {
   background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
@@ -499,7 +504,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .member p     { color: var(--muted); font-size: 14.5px; margin: 0; max-width: 280px; }
 
 /* ---------- LOCATIONS ---------- */
-.locations { grid-template-columns: repeat(3, 1fr); }
+.locations { grid-template-columns: repeat(2, 1fr); }
 .location { padding: 28px 24px; display: grid; gap: 14px; align-content: start; }
 .loc-head { display: flex; align-items: center; gap: 12px; justify-content: space-between; }
 .loc-head h3 { font-size: 24px; font-weight: 700; margin: 0; letter-spacing: -.01em; color: var(--ink-2); }
