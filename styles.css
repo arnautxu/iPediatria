@@ -533,6 +533,52 @@ ul { list-style: none; margin: 0; padding: 0; }
 .location.featured .loc-phone  { background: rgba(255,255,255,.2); color: #fff; border-color: rgba(255,255,255,.35); }
 .location.featured .loc-phone svg { color: #fff; }
 
+/* ---------- LOCATIONS extra ---------- */
+.loc-hours {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--muted); font-size: 14px; margin: 0;
+}
+.loc-hours svg { width: 15px; height: 15px; color: var(--cyan); flex-shrink: 0; }
+.loc-mutues {
+  font-size: 12.5px; font-weight: 600; color: var(--cyan);
+  background: rgba(0,174,239,.1); padding: 4px 12px;
+  border-radius: var(--radius-pill); width: fit-content; margin: 0;
+}
+.location.featured .loc-mutues { background: rgba(255,255,255,.2); color: #fff; }
+.location.featured .loc-hours  { color: rgba(255,255,255,.85); }
+.location.featured .loc-hours svg { color: #fff; }
+
+/* ---------- CONSULTORI HOURS ---------- */
+.hours-list { display: grid; gap: 10px; margin-top: 20px; }
+.hour-row { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-2); }
+.hour-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.hour-dot.cyan { background: var(--cyan); box-shadow: 0 0 0 3px rgba(0,174,239,.2); }
+.hour-dot.gray { background: var(--gray-lt); }
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials { grid-template-columns: repeat(2, 1fr); }
+.testimonial { padding: 28px 26px; display: grid; gap: 18px; align-content: space-between; }
+.testimonial blockquote {
+  margin: 0; font-size: 16px; color: var(--ink-2); line-height: 1.6;
+  font-style: italic; position: relative; padding-left: 20px;
+}
+.testimonial blockquote::before {
+  content: '"'; position: absolute; left: 0; top: -6px;
+  font-size: 48px; line-height: 1; color: var(--cyan); opacity: .4;
+  font-family: Georgia, serif;
+}
+.testimonial figcaption { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: 700; font-size: 16px; color: #fff; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
+}
+.testimonial:nth-child(even) .testi-avatar {
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-2));
+}
+.testimonial figcaption strong { display: block; font-size: 15px; color: var(--ink-2); }
+.testimonial figcaption span   { font-size: 13px; color: var(--muted); }
+
 /* ---------- CONTACT ---------- */
 .contact-card {
   padding: clamp(28px,4vw,56px);
@@ -543,9 +589,15 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: -.025em; line-height: 1.1; margin: 16px 0; color: var(--ink-2);
 }
 .contact-card > div > p { color: var(--muted); font-size: 17px; margin: 0 0 20px; }
-.contact-list { display: grid; gap: 10px; }
-.contact-list li { color: var(--ink-2); font-size: 15px; }
+.contact-list { display: grid; gap: 12px; }
+.contact-list li {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ink-2); font-size: 15px;
+}
+.contact-list li svg { width: 17px; height: 17px; color: var(--cyan); flex-shrink: 0; }
 .contact-list strong { color: var(--cyan); }
+.contact-list a { color: var(--ink-2); transition: color .2s; }
+.contact-list a:hover { color: var(--cyan); }
 
 .form { display: grid; gap: 14px; }
 .form label { display: grid; gap: 6px; }
@@ -580,10 +632,14 @@ ul { list-style: none; margin: 0; padding: 0; }
 .footer li, .footer a { color: var(--ink-2); font-size: 14.5px; }
 .footer a:hover { color: var(--cyan); }
 .footer-tag { color: var(--muted); margin-top: 12px; font-size: 14.5px; max-width: 300px; }
+.footer-email { color: var(--cyan); font-size: 14.5px; margin-top: 8px; display: block; }
+.footer-email:hover { text-decoration: underline; }
 .footer-bottom {
   display: flex; justify-content: space-between; gap: 16px;
   padding-top: 24px; color: var(--muted); font-size: 13px; flex-wrap: wrap;
 }
+.footer-legal a { color: var(--muted); }
+.footer-legal a:hover { color: var(--cyan); }
 
 /* ---------- REVEAL ---------- */
 .reveal {
@@ -617,7 +673,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
   .nav-links a { padding: 12px 16px; justify-content: space-between; }
   .nav-cta-li { margin-left: 0; }
-  .services, .team, .locations { grid-template-columns: 1fr; }
+  .services, .team, .locations, .testimonials { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-trust { flex-wrap: wrap; }
   .trust-sep { display: none; }

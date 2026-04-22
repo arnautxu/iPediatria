@@ -1,5 +1,13 @@
 // iPediatria & iDoctor — interactivity
 
+// Form
+function handleForm(e) {
+  e.preventDefault();
+  const ok = e.target.querySelector('.form-ok');
+  ok.classList.add('show');
+  e.target.querySelector('button[type=submit]').disabled = true;
+}
+
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
