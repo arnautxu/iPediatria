@@ -168,8 +168,8 @@ ul, ol { list-style: none; }
 }
 
 .logo { display: inline-flex; align-items: center; }
-.logo-img { height: 44px; width: auto; display: block; }
-.footer-logo-img { height: 58px; }
+.logo-img { height: 72px; width: auto; display: block; }
+.footer-logo-img { height: 110px; }
 
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-links a {
@@ -739,7 +739,7 @@ ul, ol { list-style: none; }
    ============================================================ */
 
 .consultori-section {
-  background: var(--ink-deep);
+  background: linear-gradient(135deg, #00486A 0%, #006B98 50%, #0089BE 100%);
   color: #F5FAFD;
   position: relative;
   overflow: hidden;
