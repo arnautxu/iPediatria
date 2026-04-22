@@ -7,19 +7,21 @@
   <meta name="description" content="Un nou concepte d'atenció mèdica familiar i pediàtrica a Palafrugell. Disponibles 7 dies a la setmana, visites a domicili, videoconsulta i consultori online.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Fons animat -->
-  <div class="bg-stage" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
+  <!-- Stage editorial: noise + detalls -->
+  <div class="stage" aria-hidden="true">
     <div class="grain"></div>
+    <div class="accent-blur accent-cyan"></div>
+    <div class="accent-blur accent-mag"></div>
+    <div class="rule rule-top"></div>
   </div>
+
+  <!-- Custom cursor follower -->
+  <div class="cursor-dot" aria-hidden="true"></div>
 
   <!-- Navegació -->
   <header class="nav-wrap">
@@ -33,10 +35,10 @@
       </button>
 
       <ul class="nav-links">
-        <li><a href="#ajuda">Com t'ajudem</a></li>
-        <li><a href="#on-estem">On estem</a></li>
-        <li><a href="#equip">L'equip</a></li>
-        <li><a href="#contacte">Pregunta'ns</a></li>
+        <li><a href="#ajuda"><span class="num">01</span> Com t'ajudem</a></li>
+        <li><a href="#equip"><span class="num">02</span> L'equip</a></li>
+        <li><a href="#on-estem"><span class="num">03</span> On estem</a></li>
+        <li><a href="#contacte"><span class="num">04</span> Pregunta'ns</a></li>
         <li class="nav-cta-li">
           <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="nav-cta">
             <span class="nav-cta-dot"></span>
@@ -48,55 +50,50 @@
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO editorial -->
   <section id="inici" class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy reveal">
-        <span class="eyebrow glass-chip">
-          <span class="pulse-dot"></span>
-          Un nou concepte d'atenció mèdica
-        </span>
-        <h1 class="display">
-          La salut és la base<br>
-          del <span class="grad-text">desenvolupament</span><br>
-          i de la <span class="grad-text alt">felicitat</span>.
+
+    <div class="hero-meta">
+      <span class="meta-line"></span>
+      <span class="meta-tag">No. 01 — Un nou concepte</span>
+      <span class="meta-year">Des de 2010</span>
+    </div>
+
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <h1 class="editorial-title">
+          <span class="line-1 stagger" style="--d:0">La salut és</span>
+          <span class="line-2 stagger" style="--d:1">la base del</span>
+          <span class="line-3 stagger" style="--d:2"><em>desenvolupament</em></span>
+          <span class="line-4 stagger" style="--d:3">i de la <em class="mag">felicitat.</em></span>
         </h1>
-        <p class="hero-sub">
-          Pediatria i medicina familiar sense cues, disponibles 7 dies a la setmana.
+
+        <p class="hero-sub stagger" style="--d:4">
+          <span class="bullet-dot"></span>
+          Pediatria i medicina familiar a Palafrugell. Sense cues, 7 dies a la setmana.
         </p>
-        <p class="lead">
-          Som un equip de professionals de la salut que entenem les necessitats de les persones com a pròpies. T'oferim un servei totalment personalitzat i d'alta qualitat, centrat en el pacient.
+
+        <p class="lead stagger" style="--d:5">
+          Som un equip de professionals de la salut que entenem les necessitats de les persones com a pròpies. Un servei totalment personalitzat i d'alta qualitat, centrat en el pacient.
         </p>
-        <div class="hero-actions">
+
+        <div class="hero-actions stagger" style="--d:6">
           <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta">
-            Accedir al consultori online
+            <span>Accedir al consultori online</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#ajuda" class="btn btn-ghost glass">
-            Descobreix els serveis
+          <a href="#ajuda" class="btn btn-ghost">
+            <span>Descobreix els serveis</span>
           </a>
-        </div>
-
-        <div class="hero-trust">
-          <div class="trust-item">
-            <strong>Des de 2010</strong>
-            <span>Alternativa assistencial de confiança</span>
-          </div>
-          <div class="trust-sep"></div>
-          <div class="trust-item">
-            <strong>7 a 24 h</strong>
-            <span>Tots els dies de l'any</span>
-          </div>
-          <div class="trust-sep"></div>
-          <div class="trust-item">
-            <strong>Mútues</strong>
-            <span>S'accepten principals companyies</span>
-          </div>
         </div>
       </div>
 
-      <div class="hero-visual reveal">
-        <div class="glass-card hero-card float-a">
+      <aside class="hero-aside">
+
+        <div class="big-amp stagger" style="--d:3" aria-hidden="true">&amp;</div>
+
+        <div class="glass-card hero-card stagger" style="--d:4">
           <div class="hero-card-head">
             <span class="status-dot"></span>
             <span>Consultori online · En directe</span>
@@ -114,108 +111,144 @@
           </div>
         </div>
 
-        <div class="glass-card pill-card float-b">
+        <div class="glass-card pill-card stagger" style="--d:5">
           <div class="pill-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6l1 5H8L9 3zM7 8h10l-1.5 13h-7L7 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
           <div>
             <strong>Farmàcia a domicili</strong>
-            <span>Primera dosi inclosa a la visita</span>
+            <span>Primera dosi a la visita</span>
           </div>
         </div>
 
-        <div class="glass-card mini-card float-c">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s-8-5.5-8-13a8 8 0 0 1 16 0c0 7.5-8 13-8 13z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
-          <span>Palafrugell · Costa Brava</span>
+        <div class="glass-card mini-card stagger" style="--d:6">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>7 a 24 h · Tots els dies</span>
         </div>
 
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+      </aside>
+
+    </div>
+
+    <!-- Manifest inline -->
+    <div class="hero-stats stagger" style="--d:7">
+      <div class="stat">
+        <span class="stat-num">15<small>+</small></span>
+        <span class="stat-lab">anys d'experiència en pediatria d'atenció primària</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7/24</span>
+        <span class="stat-lab">disponibilitat per videoconsulta i visites a domicili</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100<small>%</small></span>
+        <span class="stat-lab">atenció personalitzada, centrada en cada família</span>
       </div>
     </div>
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>· Pediatria</span><span>· Medicina familiar</span><span>· Vacunació</span><span>· Videoconsulta</span><span>· Visites a domicili</span><span>· Proves PCR</span><span>· Fisioteràpia</span><span>· Logopèdia</span><span>· Psicologia</span><span>· Podologia</span><span>· Farmàcia a domicili</span><span>· Detecció ràpida</span>
-        <span>· Pediatria</span><span>· Medicina familiar</span><span>· Vacunació</span><span>· Videoconsulta</span><span>· Visites a domicili</span><span>· Proves PCR</span><span>· Fisioteràpia</span><span>· Logopèdia</span><span>· Psicologia</span><span>· Podologia</span><span>· Farmàcia a domicili</span><span>· Detecció ràpida</span>
+        <span>Pediatria</span><em>—</em><span>Medicina familiar</span><em>—</em><span>Videoconsulta</span><em>—</em><span>Visites a domicili</span><em>—</em><span>Vacunació</span><em>—</em><span>Detecció ràpida</span><em>—</em><span>Farmàcia a domicili</span><em>—</em><span>Fisioteràpia</span><em>—</em><span>Logopèdia</span><em>—</em><span>Psicologia</span><em>—</em><span>Podologia</span><em>—</em>
+        <span>Pediatria</span><em>—</em><span>Medicina familiar</span><em>—</em><span>Videoconsulta</span><em>—</em><span>Visites a domicili</span><em>—</em><span>Vacunació</span><em>—</em><span>Detecció ràpida</span><em>—</em><span>Farmàcia a domicili</span><em>—</em><span>Fisioteràpia</span><em>—</em><span>Logopèdia</span><em>—</em><span>Psicologia</span><em>—</em><span>Podologia</span><em>—</em>
       </div>
     </div>
+
   </section>
 
   <!-- COM T'AJUDEM -->
-  <section id="ajuda" class="section">
+  <section id="ajuda" class="section services-section">
     <div class="container">
+
       <header class="section-head reveal">
-        <span class="eyebrow glass-chip">Com t'ajudem</span>
-        <h2>Atenció mèdica familiar i pediàtrica sense cues</h2>
-        <p>Per pediatres, infermeres, metges de família i especialistes. Fisioteràpia, podologia, logopèdia i psicologia. Disponibles 7 dies a la setmana.</p>
+        <span class="section-num">01</span>
+        <div class="section-head-text">
+          <span class="eyebrow">Com t'ajudem</span>
+          <h2 class="editorial-h2">Atenció <em>sense cues</em>, a casa o al consultori.</h2>
+          <p>Per pediatres, infermeres, metges de família i especialistes. Fisioteràpia, podologia, logopèdia i psicologia. Disponibles 7 dies a la setmana.</p>
+        </div>
       </header>
 
-      <div class="grid services">
+      <div class="services-grid">
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <article class="service-card reveal" data-num="01">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Disponibilitat</h3>
+            <p>Atenció mèdica a domicili els 7 dies a la setmana, o en les nostres consultes a hores convingudes. Sense cues, sense esperes.</p>
           </div>
-          <h3>Disponibilitat</h3>
-          <p>Atenció mèdica a domicili els 7 dies a la setmana, o en les nostres consultes a hores convingudes. Sense cues, sense esperes.</p>
         </article>
 
-        <article class="glass-card service reveal featured">
-          <span class="badge">Destacat</span>
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M17 9l4-2v10l-4-2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <article class="service-card featured reveal" data-num="02">
+          <div class="service-card-inner">
+            <span class="badge">Destacat</span>
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M17 9l4-2v10l-4-2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Consultori online</h3>
+            <p>Videoconsultes i consultes escrites disponibles de 7 a 24 h tots els dies. Seguiment continuat amb el teu metge de referència.</p>
           </div>
-          <h3>Consultori online</h3>
-          <p>Videoconsultes i consultes escrites disponibles de 7 a 24 h tots els dies. Seguiment continuat amb el teu metge de referència.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <article class="service-card reveal" data-num="03">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Visites a domicili</h3>
+            <p>Tots els dies de 7 a 24 h. Servei reemborsable per la majoria de companyies d'assegurances. Contacte via WhatsApp.</p>
           </div>
-          <h3>Visites a domicili</h3>
-          <p>Tots els dies de 7 a 24 h. Servei reemborsable per la majoria de companyies d'assegurances. Contacte via WhatsApp.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6l1 5H8L9 3zM7 8h10l-1.5 13h-7L7 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <article class="service-card reveal" data-num="04">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6l1 5H8L9 3zM7 8h10l-1.5 13h-7L7 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Farmàcia a domicili</h3>
+            <p>En les visites domiciliàries subministrem la primera dosi de medicament perquè no hagis de sortir de casa.</p>
           </div>
-          <h3>Farmàcia a domicili</h3>
-          <p>En les visites domiciliàries subministrem la primera dosi de medicament perquè no hagis de sortir de casa.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <article class="service-card reveal" data-num="05">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Detecció ràpida</h3>
+            <p>Tests de detecció ràpida i PCR per malalties freqüents. Resultats immediats sense esperar del laboratori.</p>
           </div>
-          <h3>Detecció ràpida</h3>
-          <p>Tests de detecció ràpida i PCR per malalties freqüents. Resultats immediats sense esperar del laboratori.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+        <article class="service-card reveal" data-num="06">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Vacunació</h3>
+            <p>Centre vacunal autoritzat. Vacunes del calendari oficial estatal i altres vacunes recomanables.</p>
           </div>
-          <h3>Vacunació</h3>
-          <p>Centre vacunal autoritzat. Vacunes del calendari oficial estatal i altres vacunes recomanables. Assessorament personalitzat.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/></svg>
+        <article class="service-card reveal" data-num="07">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Proves complementàries</h3>
+            <p>Convenis de col·laboració amb centres mèdics, hospitals i laboratoris per a totes les proves que necessitis.</p>
           </div>
-          <h3>Proves complementàries</h3>
-          <p>Convenis de col·laboració amb centres mèdics, hospitals i laboratoris per a totes les proves que necessitis.</p>
         </article>
 
-        <article class="glass-card service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <article class="service-card reveal" data-num="08">
+          <div class="service-card-inner">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Equip especialitzat</h3>
+            <p>Tots els membres del nostre equip són professionals amb una dilatada experiència. Fisioteràpia, podologia, logopèdia i psicologia.</p>
           </div>
-          <h3>Equip especialitzat</h3>
-          <p>Tots els membres del nostre equip són professionals amb una dilatada experiència. Fisioteràpia, podologia, logopèdia i psicologia.</p>
         </article>
 
       </div>
@@ -223,34 +256,41 @@
   </section>
 
   <!-- CONSULTORI ONLINE -->
-  <section id="consultori" class="section consultori">
+  <section id="consultori" class="section consultori-section">
     <div class="container">
-      <div class="glass-card consultori-card reveal">
+      <div class="consultori-wrap reveal">
+
         <div class="consultori-copy">
-          <span class="eyebrow glass-chip">Consultori online</span>
-          <h2>El teu metge, sempre a prop teu</h2>
+          <span class="eyebrow">Consultori online</span>
+          <h2 class="editorial-h2">El teu metge, <em class="mag">sempre a prop teu.</em></h2>
           <p>Accedeix a la teva àrea privada de 7 a 24 h, tots els dies. Demana videoconsulta, envia consultes escrites, consulta el teu historial i rep les receptes quan ho necessitis.</p>
+
           <div class="hero-actions">
             <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta">
-              Accedir ara
+              <span>Accedir ara</span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
-          <div class="hours-list">
-            <div class="hour-row">
+
+          <ul class="hours-list">
+            <li>
               <span class="hour-dot cyan"></span>
-              <span><strong>Consultori online:</strong> tots els dies, de 7 a 24 h</span>
-            </div>
-            <div class="hour-row">
+              <span class="hour-label">Consultori online</span>
+              <span class="hour-time">Tots els dies · 7 a 24 h</span>
+            </li>
+            <li>
               <span class="hour-dot cyan"></span>
-              <span><strong>Visites a domicili:</strong> tots els dies, de 7 a 24 h</span>
-            </div>
-            <div class="hour-row">
+              <span class="hour-label">Visites a domicili</span>
+              <span class="hour-time">Tots els dies · 7 a 24 h</span>
+            </li>
+            <li>
               <span class="hour-dot gray"></span>
-              <span><strong>Centre Palafrugell:</strong> dimecres de 15:30 a 18 h</span>
-            </div>
-          </div>
+              <span class="hour-label">Centre Palafrugell</span>
+              <span class="hour-time">Dimecres · 15:30 a 18 h</span>
+            </li>
+          </ul>
         </div>
+
         <div class="consultori-visual">
           <div class="device glass">
             <div class="device-bar">
@@ -276,84 +316,119 @@
               </div>
             </div>
           </div>
+          <div class="dev-note">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <span>Plataforma mèdica segura i certificada.</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- L'EQUIP -->
-  <section id="equip" class="section">
+  <section id="equip" class="section team-section">
     <div class="container">
+
       <header class="section-head reveal">
-        <span class="eyebrow glass-chip">L'equip</span>
-        <h2>Professionals amb una dilatada experiència</h2>
-        <p>Tots els membres del nostre equip entenen les necessitats de les persones com a pròpies.</p>
+        <span class="section-num">02</span>
+        <div class="section-head-text">
+          <span class="eyebrow">L'equip</span>
+          <h2 class="editorial-h2">Professionals amb <em>una dilatada experiència.</em></h2>
+          <p>Tots els membres del nostre equip entenen les necessitats de les persones com a pròpies.</p>
+        </div>
       </header>
 
-      <div class="grid team">
-        <article class="glass-card member reveal">
-          <div class="avatar-xl a1">IO</div>
-          <h3>Dra. Iratxe Olabegoya</h3>
-          <span class="role">Directora fundadora · Pediatria</span>
-          <p>Més de 15 anys d'experiència en pediatria d'atenció primària. Especialista en el seguiment integral de la salut infantil i familiar.</p>
+      <div class="team-grid">
+
+        <article class="team-card reveal">
+          <div class="team-portrait">
+            <div class="portrait-mono a1">IO</div>
+            <span class="team-idx">01</span>
+          </div>
+          <div class="team-body">
+            <span class="team-role">Directora fundadora</span>
+            <h3>Dra. Iratxe Olabegoya</h3>
+            <p>Més de 15 anys d'experiència en pediatria d'atenció primària. Especialista en el seguiment integral de la salut infantil i familiar.</p>
+          </div>
         </article>
 
-        <article class="glass-card member reveal">
-          <div class="avatar-xl a2">PP</div>
-          <h3>Dr. Pere Plaja</h3>
-          <span class="role">Soci fundador · Pediatria</span>
-          <p>Ha desenvolupat tota la seva carrera en l'àmbit de la pediatria d'atenció primària i hospitalària. Referent a la Costa Brava.</p>
+        <article class="team-card reveal">
+          <div class="team-portrait">
+            <div class="portrait-mono a2">PP</div>
+            <span class="team-idx">02</span>
+          </div>
+          <div class="team-body">
+            <span class="team-role">Soci fundador</span>
+            <h3>Dr. Pere Plaja</h3>
+            <p>Ha desenvolupat tota la seva carrera en l'àmbit de la pediatria d'atenció primària i hospitalària. Referent a la Costa Brava.</p>
+          </div>
         </article>
 
-        <article class="glass-card member reveal">
-          <div class="avatar-xl a3">FA</div>
-          <h3>Inf. Fina Aguilar</h3>
-          <span class="role">Sòcia fundadora · Infermeria pediàtrica</span>
-          <p>Infermera pediàtrica amb una dilatada experiència en urgències. Cures i acompanyament familiar amb la màxima proximitat.</p>
+        <article class="team-card reveal">
+          <div class="team-portrait">
+            <div class="portrait-mono a3">FA</div>
+            <span class="team-idx">03</span>
+          </div>
+          <div class="team-body">
+            <span class="team-role">Sòcia fundadora</span>
+            <h3>Inf. Fina Aguilar</h3>
+            <p>Infermera pediàtrica amb una dilatada experiència en urgències. Cures i acompanyament familiar amb la màxima proximitat.</p>
+          </div>
         </article>
+
       </div>
     </div>
   </section>
 
   <!-- ON ESTEM -->
-  <section id="on-estem" class="section">
+  <section id="on-estem" class="section locations-section">
     <div class="container">
+
       <header class="section-head reveal">
-        <span class="eyebrow glass-chip">On estem</span>
-        <h2>A Palafrugell, a casa teva i a tot arreu</h2>
-        <p>Consulta presencial a Palafrugell, visites a domicili a tota la comarca i consultori online des de qualsevol lloc.</p>
+        <span class="section-num">03</span>
+        <div class="section-head-text">
+          <span class="eyebrow">On estem</span>
+          <h2 class="editorial-h2">A Palafrugell, <em>a casa teva</em> i a tot arreu.</h2>
+          <p>Consulta presencial a Palafrugell, visites a domicili a tota la comarca i consultori online des de qualsevol lloc.</p>
+        </div>
       </header>
 
-      <div class="grid locations">
+      <div class="locations-grid">
 
-        <article class="glass-card location reveal">
+        <article class="location-card reveal">
           <div class="loc-head">
             <h3>Palafrugell</h3>
             <span class="tag">Seu principal</span>
           </div>
           <p class="loc-addr">Plaça de Catalunya, 5 baixos<br>17200 Palafrugell</p>
-          <p class="loc-hours">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Dimecres: 15:30 – 18 h · Centre vacunal
-          </p>
-          <p class="loc-mutues">S'accepten mútues</p>
+          <div class="loc-meta">
+            <span class="loc-chip">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Dimecres · 15:30 – 18 h
+            </span>
+            <span class="loc-chip">Centre vacunal</span>
+            <span class="loc-chip">S'accepten mútues</span>
+          </div>
           <a class="loc-phone" href="tel:+34972306565">
             <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             +34 972 30 65 65
           </a>
         </article>
 
-        <article class="glass-card location featured reveal">
+        <article class="location-card featured reveal">
           <div class="loc-head">
             <h3>A domicili</h3>
             <span class="tag">Tota la comarca</span>
           </div>
           <p class="loc-addr">Tota la Costa Brava<br>7 dies a la setmana</p>
-          <p class="loc-hours">
-            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Tots els dies: 7 a 24 h
-          </p>
-          <p class="loc-mutues">Reemborsable per la majoria d'assegurances</p>
+          <div class="loc-meta">
+            <span class="loc-chip">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Tots els dies · 7 a 24 h
+            </span>
+            <span class="loc-chip">Reemborsable per mútues</span>
+          </div>
           <a class="loc-phone" href="tel:+34605166166">
             <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             +34 605 166 166
@@ -367,62 +442,55 @@
   <!-- TESTIMONIALS -->
   <section class="section testimonials-section">
     <div class="container">
-      <header class="section-head reveal">
-        <span class="eyebrow glass-chip">El que diuen de nosaltres</span>
-        <h2>Famílies que confien en iPediatria</h2>
+
+      <header class="section-head reveal centered">
+        <span class="eyebrow">El que diuen de nosaltres</span>
+        <h2 class="editorial-h2">Famílies <em>que hi tornen.</em></h2>
       </header>
 
-      <div class="grid testimonials">
+      <div class="testimonials-grid">
 
-        <figure class="glass-card testimonial reveal">
+        <figure class="testimonial reveal">
+          <div class="quote-mark">"</div>
           <blockquote>
-            "Somos de Madrid y pasamos las vacaciones en Palamós, y nuestra hija se puso enferma. Nos trataron perfectamente, rápidos y muy profesionales."
+            Somos de Madrid y pasamos las vacaciones en Palamós, y nuestra hija se puso enferma. Nos trataron perfectamente, <em>rápidos y muy profesionales.</em>
           </blockquote>
           <figcaption>
-            <div class="testi-avatar">M</div>
-            <div>
-              <strong>Mónica</strong>
-              <span>Madrid</span>
-            </div>
+            <strong>Mónica</strong>
+            <span>Madrid</span>
           </figcaption>
         </figure>
 
-        <figure class="glass-card testimonial reveal">
+        <figure class="testimonial reveal">
+          <div class="quote-mark">"</div>
           <blockquote>
-            "Professionalitat i amabilitat absoluta. Quan necessitem atenció mèdica ràpida, sempre acudim a ells."
+            <em>Professionalitat i amabilitat absoluta.</em> Quan necessitem atenció mèdica ràpida, sempre acudim a ells.
           </blockquote>
           <figcaption>
-            <div class="testi-avatar">E</div>
-            <div>
-              <strong>Elena</strong>
-              <span>Client habitual</span>
-            </div>
+            <strong>Elena</strong>
+            <span>Client habitual</span>
           </figcaption>
         </figure>
 
-        <figure class="glass-card testimonial reveal">
+        <figure class="testimonial reveal">
+          <div class="quote-mark">"</div>
           <blockquote>
-            "Tenim 2a residència a S'Agaró i sempre és la nostra opció per si algun dels nens es posa malalt. Servei excel·lent."
+            Tenim 2a residència a S'Agaró i <em>sempre és la nostra opció</em> per si algun dels nens es posa malalt. Servei excel·lent.
           </blockquote>
           <figcaption>
-            <div class="testi-avatar">A</div>
-            <div>
-              <strong>Andreu</strong>
-              <span>S'Agaró</span>
-            </div>
+            <strong>Andreu</strong>
+            <span>S'Agaró</span>
           </figcaption>
         </figure>
 
-        <figure class="glass-card testimonial reveal">
+        <figure class="testimonial reveal">
+          <div class="quote-mark">"</div>
           <blockquote>
-            "És un servei que funciona perfectament. La metgessa que ens va visitar es nota que li agrada aquesta feina."
+            És un servei que funciona perfectament. La metgessa que ens va visitar <em>es nota que li agrada aquesta feina.</em>
           </blockquote>
           <figcaption>
-            <div class="testi-avatar">E</div>
-            <div>
-              <strong>Eduard</strong>
-              <span>Client habitual</span>
-            </div>
+            <strong>Eduard</strong>
+            <span>Client habitual</span>
           </figcaption>
         </figure>
 
@@ -431,29 +499,38 @@
   </section>
 
   <!-- CONTACTE -->
-  <section id="contacte" class="section">
+  <section id="contacte" class="section contact-section">
     <div class="container">
-      <div class="glass-card contact-card reveal">
-        <div>
-          <span class="eyebrow glass-chip">Pregunta'ns</span>
-          <h2>Estem aquí per escoltar-te</h2>
+
+      <header class="section-head reveal">
+        <span class="section-num">04</span>
+        <div class="section-head-text">
+          <span class="eyebrow">Pregunta'ns</span>
+          <h2 class="editorial-h2">Estem aquí <em>per escoltar-te.</em></h2>
           <p>Envia'ns una consulta i un membre de l'equip et respondrà. Per urgències, contacta'ns directament per telèfon o WhatsApp.</p>
+        </div>
+      </header>
+
+      <div class="contact-wrap reveal">
+
+        <div class="contact-info">
           <ul class="contact-list">
             <li>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-              <span><strong>WhatsApp / Domicili:</strong> <a href="tel:+34605166166">+34 605 166 166</a></span>
+              <span class="c-label">WhatsApp · Domicili</span>
+              <a href="tel:+34605166166" class="c-value">+34 605 166 166</a>
             </li>
             <li>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-              <span><strong>Palafrugell:</strong> <a href="tel:+34972306565">+34 972 30 65 65</a></span>
+              <span class="c-label">Palafrugell</span>
+              <a href="tel:+34972306565" class="c-value">+34 972 30 65 65</a>
             </li>
             <li>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
-              <span><a href="mailto:info@ipediatria.cat">info@ipediatria.cat</a></span>
+              <span class="c-label">Correu electrònic</span>
+              <a href="mailto:info@ipediatria.cat" class="c-value">info@ipediatria.cat</a>
             </li>
           </ul>
         </div>
-        <form class="form" onsubmit="handleForm(event)">
+
+        <form class="form glass-card" onsubmit="handleForm(event)">
           <label>
             <span>Nom</span>
             <input type="text" required placeholder="El teu nom">
@@ -466,57 +543,66 @@
             <span>Missatge</span>
             <textarea rows="4" required placeholder="Explica'ns com podem ajudar-te"></textarea>
           </label>
-          <button type="submit" class="btn btn-primary">
-            Enviar consulta
+          <button type="submit" class="btn btn-magenta">
+            <span>Enviar consulta</span>
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <span class="form-ok">Gràcies! T'escrivim ben aviat.</span>
         </form>
+
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="#inici" class="logo">
-          <img src="logo.png" alt="iPediatria & iDoctor" class="logo-img footer-logo-img">
-        </a>
-        <p class="footer-tag">Un nou concepte d'atenció mèdica familiar i pediàtrica, des de 2010.</p>
-        <a href="mailto:info@ipediatria.cat" class="footer-email">info@ipediatria.cat</a>
-      </div>
-      <div>
-        <h4>Navegació</h4>
-        <ul>
-          <li><a href="#ajuda">Com t'ajudem</a></li>
-          <li><a href="#on-estem">On estem</a></li>
-          <li><a href="#equip">L'equip</a></li>
-          <li><a href="#contacte">Pregunta'ns</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Centres</h4>
-        <ul>
-          <li>Plaça de Catalunya, 5 baixos · Palafrugell</li>
-          <li>Visites a domicili · 7 a 24 h</li>
-          <li><a href="tel:+34605166166">+34 605 166 166</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Consultori online</h4>
-        <p style="color:var(--muted);font-size:14px;margin:0 0 14px">Disponible tots els dies de 7 a 24 h.</p>
-        <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta small">
-          Accedir ara
+    <div class="container">
+
+      <div class="footer-signature reveal">
+        <h2 class="editorial-display">
+          <em>La salut</em> és la base<br>
+          de la <em class="mag">felicitat.</em>
+        </h2>
+        <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta">
+          <span>Consultori online</span>
           <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> iPediatria &amp; iDoctor. Tots els drets reservats.</span>
-      <span class="footer-legal">
-        <a href="#">Avís legal i privacitat</a> · <a href="#">Política de cookies</a>
-      </span>
+
+      <div class="footer-grid">
+        <div>
+          <a href="#inici" class="logo">
+            <img src="logo.png" alt="iPediatria & iDoctor" class="logo-img footer-logo-img">
+          </a>
+          <p class="footer-tag">Un nou concepte d'atenció mèdica familiar i pediàtrica, des de 2010.</p>
+        </div>
+        <div>
+          <h4>Navegació</h4>
+          <ul>
+            <li><a href="#ajuda">Com t'ajudem</a></li>
+            <li><a href="#equip">L'equip</a></li>
+            <li><a href="#on-estem">On estem</a></li>
+            <li><a href="#contacte">Pregunta'ns</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacte</h4>
+          <ul>
+            <li>Plaça de Catalunya, 5 · Palafrugell</li>
+            <li>Visites a domicili · 7 a 24 h</li>
+            <li><a href="tel:+34605166166">+34 605 166 166</a></li>
+            <li><a href="mailto:info@ipediatria.cat">info@ipediatria.cat</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> iPediatria &amp; iDoctor · Tots els drets reservats.</span>
+        <span class="footer-legal">
+          <a href="#">Avís legal</a> · <a href="#">Privacitat</a> · <a href="#">Cookies</a>
+        </span>
+      </div>
+
     </div>
   </footer>
 
