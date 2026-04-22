@@ -31,7 +31,7 @@
 
   /* ── Type ──
      Myriad Pro = tipografia corporativa; Inter = fallback grotesca */
-  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:    'Bricolage Grotesque', 'myriad-pro', 'Myriad Pro', 'MyriadPro', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: var(--font-sans);
   --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -50,7 +50,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--ink);
   background:
     radial-gradient(1100px 700px at 85% -10%, rgba(0,174,239,.35), transparent 60%),
@@ -256,28 +256,10 @@ ul, ol { list-style: none; }
   display: block;
   padding-left: 0;
 }
-.editorial-title .line-1 {
-  font-size: .32em;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--cyan-deep);
-  margin-bottom: clamp(14px, 1.4vw, 22px);
-  line-height: 1;
-}
-.editorial-title .line-1::before {
-  content: '';
-  display: inline-block;
-  width: clamp(28px, 3vw, 48px);
-  height: 2px;
-  background: var(--cyan);
-  vertical-align: middle;
-  margin-right: 14px;
-  transform: translateY(-2px);
-}
+.editorial-title .line-1,
 .editorial-title .line-2 {
-  font-weight: 300;
-  color: var(--ink-2);
+  font-weight: 500;
+  color: var(--ink);
 }
 .editorial-title .line-3 {
   font-weight: 700;
