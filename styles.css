@@ -1091,8 +1091,8 @@ ul, ol { list-style: none; }
   font-size: 100px;
   line-height: 1;
   color: var(--cyan);
-  background: var(--paper);
-  padding: 0 10px;
+  background: transparent;
+  padding: 0 10px 0 0;
 }
 .testimonial:nth-child(even) .quote-mark { color: var(--magenta); }
 .testimonial blockquote {
