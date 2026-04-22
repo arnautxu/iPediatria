@@ -31,7 +31,7 @@
 
   /* ── Type ── */
   --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
-  --font-sans:    'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* ── Space & radius ── */
@@ -409,20 +409,24 @@ ul, ol { list-style: none; }
 /* HERO ASIDE */
 .hero-aside {
   position: relative;
-  min-height: 520px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px 0 20px 16px;
+  overflow: visible;
 }
 
 .big-amp {
   position: absolute;
-  top: -40px;
-  right: -20px;
+  bottom: -60px;
+  right: -10px;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(160px, 22vw, 300px);
+  font-size: clamp(140px, 18vw, 260px);
   line-height: .85;
   color: var(--magenta);
-  opacity: .07;
+  opacity: .06;
   pointer-events: none;
   user-select: none;
   font-weight: 400;
@@ -440,6 +444,7 @@ ul, ol { list-style: none; }
     inset 0 1px 0 rgba(255,255,255,.95),
     var(--glass-shadow);
   transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
+  z-index: 1;
 }
 .glass-card::before {
   content: ''; position: absolute; inset: 0;
@@ -451,10 +456,8 @@ ul, ol { list-style: none; }
 .glass-card:hover::before { opacity: 1; }
 
 .hero-card {
-  position: absolute;
-  top: 20px; right: 0; left: 20%;
   padding: 22px;
-  z-index: 2;
+  transform: translateX(12px);
 }
 .hero-card-head {
   display: flex; align-items: center; gap: 10px;
@@ -510,12 +513,11 @@ ul, ol { list-style: none; }
 }
 
 .pill-card {
-  position: absolute; bottom: 60px; left: 10px;
   display: flex; align-items: center; gap: 12px;
   padding: 14px 20px 14px 14px;
   border-radius: var(--r-pill);
-  max-width: 280px;
-  z-index: 3;
+  align-self: flex-start;
+  transform: translateX(-4px);
 }
 .pill-card .pill-ico {
   width: 44px; height: 44px; border-radius: 50%;
@@ -529,13 +531,13 @@ ul, ol { list-style: none; }
 .pill-card span { font-size: 12.5px; color: var(--ink-3); }
 
 .mini-card {
-  position: absolute; bottom: 0; right: 0;
   display: inline-flex; align-items: center; gap: 9px;
   padding: 10px 16px;
   border-radius: var(--r-pill);
   font-size: 13px; font-weight: 500;
   color: var(--ink-2);
-  z-index: 2;
+  align-self: flex-end;
+  transform: translateX(8px);
 }
 .mini-card svg { width: 15px; height: 15px; color: var(--cyan); }
 
@@ -1278,18 +1280,10 @@ ul, ol { list-style: none; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .team-grid > :last-child { grid-column: 1 / -1; max-width: 50%; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-aside {
-    min-height: 0;
-    max-width: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    align-items: start;
-  }
-  .hero-card { position: static; padding: 22px; grid-column: 1 / -1; }
-  .pill-card { position: static; max-width: 100%; }
-  .mini-card { position: static; }
+  .hero-aside { padding: 0; }
+  .hero-card { transform: none; }
+  .pill-card { transform: none; align-self: auto; }
+  .mini-card { transform: none; align-self: auto; }
   .big-amp { display: none; }
   .consultori-wrap { grid-template-columns: 1fr; }
   .contact-wrap { grid-template-columns: 1fr; }
@@ -1322,7 +1316,7 @@ ul, ol { list-style: none; }
   a, button { cursor: auto; }
   .cursor-dot { display: none; }
 
-  .hero-aside { grid-template-columns: 1fr; }
+  /* hero-aside already flex column, nothing extra needed */
   .hero-meta .meta-year { display: none; }
   .editorial-title .line-2,
   .editorial-title .line-3,
