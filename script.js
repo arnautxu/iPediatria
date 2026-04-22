@@ -1,26 +1,37 @@
 // ============================================================
-// iPediatria & iDoctor — Editorial Interactions
+// iPediatria & iDoctor — Editorial Interactions (v2)
 // ============================================================
 
 // ------ Year
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ------ Body loaded (triggers hero stagger)
+window.addEventListener('load', () => {
+  requestAnimationFrame(() => document.body.classList.add('loaded'));
+});
 
 // ------ Form
 function handleForm(e) {
   e.preventDefault();
   const ok = e.target.querySelector('.form-ok');
-  ok.classList.add('show');
-  e.target.querySelector('button[type=submit]').disabled = true;
+  if (ok) ok.classList.add('show');
+  const btn = e.target.querySelector('button[type=submit]');
+  if (btn) btn.disabled = true;
 }
+window.handleForm = handleForm;
 
-// ------ Nav scroll state
+// ------ Nav scroll state + scroll progress
 const nav = document.querySelector('.nav');
-let lastY = 0;
+const progress = document.querySelector('.scroll-progress');
+
 const onScroll = () => {
   const y = window.scrollY;
-  if (y > 20) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-  lastY = y;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? Math.min(1, y / h) : 0;
+
+  if (nav) nav.classList.toggle('scrolled', y > 20);
+  if (progress) progress.style.setProperty('--p', p);
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
@@ -35,11 +46,47 @@ toggle?.addEventListener('click', () => {
 links?.addEventListener('click', (e) => {
   if (e.target.closest('a')) {
     links.classList.remove('open');
-    toggle?.setAttribute('aria-expanded', false);
+    toggle?.setAttribute('aria-expanded', 'false');
   }
 });
 
-// ------ Reveal on scroll
+// ============================================================
+// SPLIT TEXT — Word reveal on headings tagged .word-reveal
+// ============================================================
+document.querySelectorAll('.word-reveal').forEach((el) => {
+  // Only split if there are no child elements (simple text node)
+  const processNode = (node) => {
+    if (node.nodeType === 3) {
+      const text = node.textContent;
+      const frag = document.createDocumentFragment();
+      const words = text.split(/(\s+)/);
+      let wi = 0;
+      words.forEach((w) => {
+        if (/^\s+$/.test(w)) {
+          frag.appendChild(document.createTextNode(w));
+        } else if (w.length) {
+          const outer = document.createElement('span');
+          outer.className = 'word';
+          outer.style.setProperty('--wi', wi++);
+          const inner = document.createElement('span');
+          inner.textContent = w;
+          outer.appendChild(inner);
+          frag.appendChild(outer);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === 1 && !node.classList.contains('word')) {
+      // recurse into children (e.g. <em>)
+      [...node.childNodes].forEach(processNode);
+    }
+  };
+  [...el.childNodes].forEach(processNode);
+});
+
+// ============================================================
+// REVEAL on scroll (multiple flavours)
+// ============================================================
+const revealSelector = '.reveal, .reveal-up, .reveal-fade, .reveal-scale, .word-reveal, .char-reveal, .hero-stats, .section-head';
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -47,17 +94,23 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.transitionDelay = `${Math.min(i * 35, 220)}ms`;
+document.querySelectorAll(revealSelector).forEach((el, i) => {
+  if (el.classList.contains('reveal')) {
+    el.style.transitionDelay = `${Math.min(i * 35, 220)}ms`;
+  }
   io.observe(el);
 });
 
-// ------ Glass card glare follow
-const glassCards = document.querySelectorAll('.glass-card, .service-card, .team-card, .location-card');
-glassCards.forEach((card) => {
-  card.addEventListener('mousemove', (e) => {
+// ============================================================
+// GLASS/CARD pointer tracking (glare + gradient follow)
+// ============================================================
+const trackedCards = document.querySelectorAll(
+  '.glass-card, .service-card, .team-card, .location-card, .hero-featured, .tilt'
+);
+trackedCards.forEach((card) => {
+  card.addEventListener('pointermove', (e) => {
     const rect = card.getBoundingClientRect();
     const mx = ((e.clientX - rect.left) / rect.width) * 100;
     const my = ((e.clientY - rect.top) / rect.height) * 100;
@@ -66,17 +119,83 @@ glassCards.forEach((card) => {
   });
 });
 
-// ------ Custom cursor
+// ============================================================
+// 3D TILT on team/service cards (desktop only)
+// ============================================================
+const tiltCards = document.querySelectorAll('.team-card, .service-card.featured, .hero-featured');
+if (window.matchMedia('(hover: hover)').matches) {
+  tiltCards.forEach((card) => {
+    let raf = 0;
+    const maxTilt = card.classList.contains('hero-featured') ? 6 : 4;
+
+    card.addEventListener('pointermove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const base = card.classList.contains('hero-featured') ? 'translateY(-4px)' : '';
+        card.style.transform = `${base} perspective(1000px) rotateX(${(-y * maxTilt).toFixed(2)}deg) rotateY(${(x * maxTilt).toFixed(2)}deg)`;
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(raf);
+      card.style.transform = '';
+    });
+  });
+}
+
+// ============================================================
+// MAGNETIC BUTTONS
+// ============================================================
+const magnets = document.querySelectorAll('.btn, .nav-cta, .hero-featured-cta, .magnetic');
+if (window.matchMedia('(hover: hover)').matches) {
+  magnets.forEach((m) => {
+    m.addEventListener('pointermove', (e) => {
+      const r = m.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.25;
+      const y = (e.clientY - r.top - r.height / 2) * 0.25;
+      m.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    m.addEventListener('pointerleave', () => {
+      m.style.transform = '';
+    });
+  });
+}
+
+// ============================================================
+// COUNT-UP on stat numbers
+// ============================================================
+const statNums = document.querySelectorAll('.stat-num[data-to]');
+const countIO = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const to = parseFloat(el.dataset.to);
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const duration = 1600;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const v = Math.round(to * eased);
+      el.innerHTML = `${prefix}${v}${suffix}`;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countIO.unobserve(el);
+  });
+}, { threshold: 0.4 });
+statNums.forEach((el) => countIO.observe(el));
+
+// ============================================================
+// CUSTOM CURSOR (unchanged behaviour, kept)
+// ============================================================
 const cursor = document.querySelector('.cursor-dot');
 if (cursor && window.matchMedia('(hover: hover)').matches) {
-  let targetX = 0, targetY = 0;
-  let curX = 0, curY = 0;
-
-  window.addEventListener('pointermove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-  });
-
+  let targetX = 0, targetY = 0, curX = 0, curY = 0;
+  window.addEventListener('pointermove', (e) => { targetX = e.clientX; targetY = e.clientY; });
   const render = () => {
     curX += (targetX - curX) * 0.22;
     curY += (targetY - curY) * 0.22;
@@ -85,24 +204,23 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
   };
   render();
 
-  // hover states
   const hoverables = document.querySelectorAll(
     'a, button, .service-card, .team-card, .location-card, .testimonial, .glass-card, input, textarea'
   );
   hoverables.forEach((el) => {
     el.addEventListener('pointerenter', () => {
       cursor.classList.add('hover');
-      if (el.classList.contains('btn-magenta') || el.classList.contains('nav-cta')) {
+      if (el.classList.contains('btn-magenta') || el.classList.contains('nav-cta') || el.classList.contains('hero-featured-cta')) {
         cursor.classList.add('cta');
       }
     });
-    el.addEventListener('pointerleave', () => {
-      cursor.classList.remove('hover', 'cta');
-    });
+    el.addEventListener('pointerleave', () => cursor.classList.remove('hover', 'cta'));
   });
 }
 
-// ------ Subtle parallax on the accent blurs
+// ============================================================
+// Subtle parallax on the accent blurs
+// ============================================================
 const stage = document.querySelector('.stage');
 window.addEventListener('pointermove', (e) => {
   const x = (e.clientX / window.innerWidth - 0.5) * 16;
@@ -110,31 +228,34 @@ window.addEventListener('pointermove', (e) => {
   if (stage) stage.style.transform = `translate(${x}px, ${y}px)`;
 }, { passive: true });
 
-// ------ Scrollspy
+// ============================================================
+// Scrollspy
+// ============================================================
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 const spy = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      navAnchors.forEach((a) => {
-        const href = a.getAttribute('href');
-        if (href === `#${id}`) {
-          a.style.color = 'var(--cyan-deep)';
-          const num = a.querySelector('.num');
-          if (num) num.style.color = 'var(--cyan)';
-        } else if (!a.classList.contains('nav-cta')) {
-          a.style.color = '';
-          const num = a.querySelector('.num');
-          if (num) num.style.color = '';
-        }
-      });
-    }
+    if (!entry.isIntersecting) return;
+    const id = entry.target.id;
+    navAnchors.forEach((a) => {
+      const href = a.getAttribute('href');
+      if (href === `#${id}`) {
+        a.style.color = 'var(--cyan-deep)';
+        const num = a.querySelector('.num');
+        if (num) num.style.color = 'var(--cyan)';
+      } else if (!a.classList.contains('nav-cta')) {
+        a.style.color = '';
+        const num = a.querySelector('.num');
+        if (num) num.style.color = '';
+      }
+    });
   });
 }, { rootMargin: '-35% 0px -55% 0px' });
 sections.forEach((s) => spy.observe(s));
 
-// ------ Marquee pause on hover
+// ============================================================
+// Marquee pause on hover
+// ============================================================
 const marquee = document.querySelector('.marquee-track');
 if (marquee) {
   const parent = marquee.parentElement;
