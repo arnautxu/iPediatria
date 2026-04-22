@@ -149,32 +149,19 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .nav.scrolled { box-shadow: var(--shadow-lg); }
 
-/* Logo que replica l'estil del logotip oficial */
+/* Logo PNG oficial */
 .logo {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-sans); font-weight: 600; color: var(--ink);
+  display: inline-flex; align-items: center;
 }
-.logo-mark {
-  display: grid; place-items: center;
-  width: 40px; height: 40px; border-radius: 12px;
-  color: white;
-  background: linear-gradient(135deg, var(--cyan), var(--cyan-2));
-  box-shadow: 0 8px 20px -8px rgba(0,174,239,.6), inset 0 1px 0 rgba(255,255,255,.45);
+.logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
-.logo-mark svg { width: 22px; height: 22px; }
-.logo-text {
-  display: flex; flex-direction: column; line-height: 1.1;
+.footer-logo-img {
+  height: 56px;
 }
-.logo-text .line1 { font-size: 17px; letter-spacing: -.01em; }
-.logo-text .line1 .i-cyan  { color: var(--cyan); font-weight: 700; }
-.logo-text .line1 .pediatria { color: var(--ink-2); font-weight: 600; }
-.logo-text .line1 .bang-cyan  { color: var(--cyan); font-weight: 700; }
-
-.logo-text .line2 { font-size: 15px; letter-spacing: -.01em; }
-.logo-text .line2 .amp   { color: var(--gray-lt); font-weight: 400; margin-right: 3px; }
-.logo-text .line2 .i-gray { color: var(--gray-lt); font-weight: 600; }
-.logo-text .line2 .doctor { color: var(--magenta); font-weight: 700; }
-.logo-text .line2 .bang-mag { color: var(--magenta); font-weight: 700; }
 
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a {
