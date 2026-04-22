@@ -29,9 +29,10 @@
   --glass-border:  rgba(255, 255, 255, 0.7);
   --glass-shadow:  0 30px 60px -25px rgba(0, 76, 115, 0.25), 0 8px 20px -8px rgba(0, 76, 115, 0.14);
 
-  /* ── Type ── */
-  --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
-  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* ── Type ──
+     Myriad Pro = tipografia corporativa; Inter = fallback grotesca */
+  --font-sans:    'myriad-pro', 'Myriad Pro', 'MyriadPro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: var(--font-sans);
   --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* ── Space & radius ── */
@@ -247,13 +248,11 @@ ul, ol { list-style: none; }
   line-height: .94;
   letter-spacing: -0.035em;
   color: var(--ink);
-  font-variation-settings: "opsz" 144, "SOFT" 50;
 }
 .editorial-title em {
   font-style: italic;
   font-weight: 500;
   color: var(--cyan);
-  font-variation-settings: "opsz" 144, "SOFT" 100;
 }
 .editorial-title em.mag { color: var(--magenta); }
 .editorial-title .line-1,
@@ -273,13 +272,11 @@ ul, ol { list-style: none; }
   line-height: 1.02;
   letter-spacing: -.028em;
   color: var(--ink);
-  font-variation-settings: "opsz" 144, "SOFT" 50;
   max-width: 18ch;
 }
 .editorial-h2 em {
   font-style: italic; font-weight: 500;
   color: var(--cyan);
-  font-variation-settings: "opsz" 144, "SOFT" 100;
 }
 .editorial-h2 em.mag { color: var(--magenta); }
 
@@ -358,7 +355,7 @@ ul, ol { list-style: none; }
 .lead {
   font-size: clamp(15px, 1.25vw, 17px);
   color: var(--ink-3);
-  margin-top: 18px;
+  margin-top: clamp(28px, 4vw, 44px);
   max-width: 44ch;
   line-height: 1.65;
 }
