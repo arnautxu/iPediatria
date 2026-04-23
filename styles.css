@@ -728,9 +728,9 @@ input:focus-visible, textarea:focus-visible {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: -10%;
-  width: 130%;
-  max-width: 680px;
+  right: -6%;
+  width: 104%;
+  max-width: 544px;
   mix-blend-mode: screen;
   display: block;
   filter: drop-shadow(0 40px 80px rgba(0,0,0,.6));
