@@ -722,22 +722,18 @@ input:focus-visible, textarea:focus-visible {
 }
 
 .consultori-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
+  position: relative;  /* anchor for absolute mockup */
 }
 .consultori-mockup {
-  width: 125%;
-  max-width: 660px;
-  margin-right: -10%;
-  margin-top: -96px;
-  margin-bottom: -96px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -10%;
+  width: 130%;
+  max-width: 680px;
   mix-blend-mode: screen;
   display: block;
   filter: drop-shadow(0 40px 80px rgba(0,0,0,.6));
-  position: relative;
   z-index: 2;
 }
 
