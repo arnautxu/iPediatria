@@ -869,7 +869,7 @@ input:focus-visible, textarea:focus-visible {
 
 .locations-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.5fr 1fr;
   gap: 0;
   border-top: 1px solid var(--rule);
 }
@@ -943,24 +943,52 @@ input:focus-visible, textarea:focus-visible {
   transform: translateY(-2px);
 }
 
+/* Featured: A domicili — full weight */
 .location-card.featured {
-  background: linear-gradient(135deg, var(--magenta), var(--magenta-deep));
+  background: var(--ink);
   color: #fff;
   border-right: 1px solid transparent;
   border-bottom: 1px solid transparent;
 }
-.location-card.featured .loc-head { border-bottom-color: rgba(255,255,255,.25); }
-.location-card.featured .loc-head h3 { color: #fff; }
-.location-card.featured .tag { color: rgba(255,255,255,.75); }
-.location-card.featured .loc-addr { color: rgba(255,255,255,.95); }
+.location-card.featured .loc-head { border-bottom-color: rgba(255,255,255,.18); }
+.location-card.featured .loc-head h3 { color: #fff; font-size: clamp(36px, 5vw, 60px); }
+.location-card.featured .tag { color: var(--cyan); }
+.location-card.featured .loc-addr { color: rgba(255,255,255,.9); font-size: 19px; }
 .location-card.featured .loc-chip {
-  background: rgba(255,255,255,.15);
-  border-color: rgba(255,255,255,.25);
-  color: #fff;
+  background: rgba(0,174,239,.18);
+  border-color: rgba(0,174,239,.35);
+  color: var(--cyan);
 }
-.location-card.featured .loc-phone { background: #fff; color: var(--magenta-deep); }
-.location-card.featured .loc-phone:hover { background: var(--ink); color: #fff; }
-.location-card.featured:hover { background: linear-gradient(135deg, var(--magenta-deep), #8c0052); }
+.location-card.featured .loc-phone { background: var(--magenta); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .location-card.featured .loc-phone:hover { background: var(--magenta-deep); transform: translateY(-2px); }
+  .location-card.featured:hover { background: #333234; }
+}
+
+/* Secondary: Palafrugell — informative, not dominant */
+.location-card.secondary .loc-head h3 {
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--ink-2);
+  font-weight: 400;
+}
+.location-card.secondary .tag { color: var(--muted); }
+.location-card.secondary .loc-addr { font-size: 15px; color: var(--ink-3); }
+.location-card.secondary .loc-chip {
+  background: rgba(0,0,0,.04);
+  border-color: var(--rule);
+  color: var(--ink-3);
+  font-size: 12px;
+}
+.location-card.secondary .loc-phone {
+  background: transparent;
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  font-size: 14px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .location-card.secondary .loc-phone:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
+  .location-card.secondary:hover { background: var(--paper); }
+}
 
 /* ============================================================
    TESTIMONIALS
