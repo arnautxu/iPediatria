@@ -84,7 +84,7 @@ input:focus-visible, textarea:focus-visible {
   position: absolute;
   left: 16px; top: -48px;
   padding: 10px 16px;
-  background: var(--ink-deep);
+  background: var(--ink);
   color: #fff;
   font-weight: 600; font-size: 14px;
   border-radius: 6px;
@@ -665,7 +665,7 @@ input:focus-visible, textarea:focus-visible {
    ============================================================ */
 
 .consultori-section {
-  background: var(--ink-deep);
+  background: var(--ink);
   color: #F5FAFD;
   position: relative;
   overflow: hidden;
@@ -1119,7 +1119,7 @@ input:focus-visible, textarea:focus-visible {
    ============================================================ */
 
 .footer {
-  background: var(--ink-deep);
+  background: var(--ink);
   color: #F5FAFD;
   padding: clamp(80px, 10vw, 140px) 0 40px;
   position: relative;
