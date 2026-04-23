@@ -1453,8 +1453,7 @@ input:focus-visible, textarea:focus-visible {
 
   .footer a:hover        { color: var(--cyan); }
   .footer-legal a:hover  { color: var(--cyan); }
-  .nav-links a:hover     { background: rgba(255,255,255,.75); color: var(--cyan-deep); }
-  .nav-links a:hover .num { color: var(--cyan); }
+  .nav-links a:not(.nav-cta):hover { background: rgba(255,255,255,.75); color: var(--cyan-deep); }
   .nav-cta:hover::before  { transform: translateX(120%); }
   .btn-magenta:hover::before { transform: translateX(120%); }
 }
