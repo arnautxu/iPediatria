@@ -651,6 +651,7 @@ input:focus-visible, textarea:focus-visible {
   background: var(--ink);
   color: #F5FAFD;
   position: relative;
+  z-index: 1;
   overflow: visible;
   padding: clamp(48px, 5vw, 72px) 0;
 }
