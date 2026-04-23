@@ -718,7 +718,22 @@ input:focus-visible, textarea:focus-visible {
   text-transform: uppercase;
 }
 
-.consultori-visual { position: relative; }
+.consultori-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.consultori-mockup {
+  width: 115%;
+  max-width: 620px;
+  margin-right: -8%;
+  mix-blend-mode: screen;   /* black bg becomes transparent over dark section */
+  display: block;
+  filter: drop-shadow(0 40px 60px rgba(0,0,0,.5));
+}
+
+/* ── old device mockup (kept for fallback, hidden) ── */
 .device {
   border-radius: var(--r-xl);
   padding: 20px;
