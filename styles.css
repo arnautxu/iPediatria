@@ -42,6 +42,10 @@
   --r-pill: 999px;
 
   --section-pad: clamp(90px, 11vw, 160px);
+
+  /* ── Motion ── */
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 /* ---------- RESET ---------- */
@@ -152,7 +156,7 @@ input:focus-visible, textarea:focus-visible {
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.95),
     var(--glass-shadow);
-  transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .3s;
+  transition: transform 350ms var(--ease-out), box-shadow 350ms ease-out;
 }
 .nav.scrolled {
   transform: translateY(-4px);
@@ -179,8 +183,7 @@ input:focus-visible, textarea:focus-visible {
   color: var(--muted);
   letter-spacing: .05em;
 }
-.nav-links a:hover { background: rgba(255,255,255,.75); color: var(--cyan-deep); }
-.nav-links a:hover .num { color: var(--cyan); }
+/* nav-links hover handled in @media (hover) block */
 
 .nav-cta-li { margin-left: 10px; }
 .nav-cta {
@@ -202,8 +205,7 @@ input:focus-visible, textarea:focus-visible {
   transition: transform .8s;
   z-index: -1;
 }
-.nav-cta:hover { transform: translateY(-1px); }
-.nav-cta:hover::before { transform: translateX(120%); }
+/* nav-cta hover handled in @media (hover) block */
 .nav-cta svg { width: 16px; height: 16px; }
 .nav-cta .num { display: none; }
 .nav-cta-dot {
@@ -379,9 +381,7 @@ input:focus-visible, textarea:focus-visible {
   font-weight: 600; font-size: 14.5px;
   letter-spacing: -.005em;
   border-radius: var(--r-pill);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .3s, color .3s;
   position: relative; overflow: hidden; isolation: isolate;
-  will-change: transform;
 }
 .btn svg { width: 17px; height: 17px; }
 .btn-magenta {
@@ -394,18 +394,10 @@ input:focus-visible, textarea:focus-visible {
   background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.4) 50%, transparent 65%);
   transform: translateX(-120%); transition: transform .8s; z-index: -1;
 }
-.btn-magenta:hover { transform: translateY(-2px); box-shadow: 0 26px 50px -16px rgba(236,0,140,.75), inset 0 1px 0 rgba(255,255,255,.4); }
-.btn-magenta:hover::before { transform: translateX(120%); }
-
 .btn-ghost {
   color: var(--ink);
   background: transparent;
   border: 1px solid var(--ink-2);
-}
-.btn-ghost:hover {
-  background: var(--ink);
-  color: var(--cream);
-  transform: translateY(-2px);
 }
 
 .btn.small { padding: 12px 20px; font-size: 13.5px; }
@@ -425,7 +417,6 @@ input:focus-visible, textarea:focus-visible {
   background: #fff;
   border: 1px solid var(--rule);
   box-shadow: 0 20px 40px -20px rgba(0,76,115,.18);
-  transition: transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s;
 }
 
 .hero-featured {
@@ -434,9 +425,7 @@ input:focus-visible, textarea:focus-visible {
   border-radius: 20px;
   background: #fff;
   border: 1px solid var(--rule);
-  box-shadow:
-    0 30px 50px -25px rgba(0,76,115,.22),
-    0 8px 16px -8px rgba(0,76,115,.1);
+  box-shadow: 0 30px 50px -25px rgba(0,76,115,.22), 0 8px 16px -8px rgba(0,76,115,.1);
 }
 
 .hero-featured-head {
@@ -466,10 +455,8 @@ input:focus-visible, textarea:focus-visible {
   background: var(--magenta);
   color: #fff !important;
   font-weight: 600; font-size: 13.5px;
-  transition: background .2s, transform .2s;
   width: fit-content;
 }
-.hero-featured-cta:hover { background: var(--magenta-deep); transform: translateY(-1px); }
 .hero-featured-cta svg { width: 15px; height: 15px; }
 
 .avatar-stack { display: flex; }
@@ -606,19 +593,14 @@ input:focus-visible, textarea:focus-visible {
   display: grid; gap: 16px;
   min-height: 270px;
   position: relative;
-  transition: transform .4s cubic-bezier(.2,.8,.2,1);
 }
 .service-card:hover { background: var(--paper); }
-.service-card:hover .service-card-inner { transform: translateY(-4px); }
-.service-card:hover::before { color: var(--cyan-deep); }
 
 .service-ico {
   width: 44px; height: 44px;
   display: grid; place-items: center;
   color: var(--cyan-deep);
-  transition: color .3s, transform .4s;
 }
-.service-card:hover .service-ico { transform: rotate(-6deg); color: var(--cyan); }
 .service-ico svg { width: 30px; height: 30px; stroke-width: 1.6; }
 
 .service-card h3 {
@@ -822,9 +804,7 @@ input:focus-visible, textarea:focus-visible {
   position: relative;
   border-top: 1px solid var(--ink);
   padding-top: 28px;
-  transition: transform .5s cubic-bezier(.2,.8,.2,1);
 }
-.team-card:hover { transform: translateY(-6px); }
 
 .team-portrait {
   position: relative;
@@ -1168,7 +1148,7 @@ input:focus-visible, textarea:focus-visible {
   font-size: 15px;
   transition: color .3s;
 }
-.footer a:hover { color: var(--cyan); }
+/* footer hover handled in @media (hover) block */
 .footer-tag { margin-top: 16px; font-size: 14.5px; color: rgba(255,255,255,.6); max-width: 300px; line-height: 1.55; }
 
 .footer-bottom {
@@ -1179,7 +1159,7 @@ input:focus-visible, textarea:focus-visible {
   flex-wrap: wrap;
 }
 .footer-legal a { color: rgba(255,255,255,.5); font-size: 13px; }
-.footer-legal a:hover { color: var(--cyan); }
+/* footer-legal hover in @media (hover) block */
 
 /* ============================================================
    REVEALS & STAGGERED ANIMATIONS
@@ -1187,9 +1167,9 @@ input:focus-visible, textarea:focus-visible {
 
 .stagger {
   opacity: 0;
-  transform: translateY(24px);
-  animation: rise .9s cubic-bezier(.22,.8,.36,1) forwards;
-  animation-delay: calc(var(--d, 0) * 80ms + 200ms);
+  transform: translateY(10px);
+  animation: rise .5s var(--ease-out) forwards;
+  animation-delay: calc(var(--d, 0) * 60ms + 120ms);
 }
 @keyframes rise {
   to { opacity: 1; transform: translateY(0); }
@@ -1197,10 +1177,24 @@ input:focus-visible, textarea:focus-visible {
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 1s cubic-bezier(.22,.8,.36,1), transform 1s cubic-bezier(.22,.8,.36,1);
+  transform: translateY(14px);
+  transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* Card stagger: each sibling delays 55ms so the grid cascades in */
+.services-grid .service-card:nth-child(2) { transition-delay: 55ms; }
+.services-grid .service-card:nth-child(3) { transition-delay: 110ms; }
+.services-grid .service-card:nth-child(4) { transition-delay: 165ms; }
+.services-grid .service-card:nth-child(5) { transition-delay:  55ms; }
+.services-grid .service-card:nth-child(6) { transition-delay: 110ms; }
+.services-grid .service-card:nth-child(7) { transition-delay: 165ms; }
+.services-grid .service-card:nth-child(8) { transition-delay: 220ms; }
+.team-grid .team-card:nth-child(2) { transition-delay: 70ms; }
+.team-grid .team-card:nth-child(3) { transition-delay: 140ms; }
+.testimonials-grid .testimonial:nth-child(2) { transition-delay: 60ms; }
+.testimonials-grid .testimonial:nth-child(3) { transition-delay: 120ms; }
+.testimonials-grid .testimonial:nth-child(4) { transition-delay: 180ms; }
 
 /* ============================================================
    RESPONSIVE
@@ -1253,39 +1247,115 @@ input:focus-visible, textarea:focus-visible {
   .hour-time { grid-column: 2; }
 }
 
-/* A11Y */
+/* A11Y — reduced motion: keep opacity (meaning), remove movement */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .001ms !important;
+  /* Stagger: appear instantly, no movement */
+  .stagger {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
+  /* Reveal: fade only, no translate */
+  .reveal {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+  /* Kill movement on everything else; preserve color/opacity transitions */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { transition-duration: 0.3s !important; }
 }
 
 /* ============================================================
-   ANIMATIONS (single system)
+   INTERACTIONS — Emil Kowalski philosophy
    ============================================================ */
 
-/* Button hover */
-.btn { transition: background .2s, color .2s, border-color .2s, transform .2s; }
-.btn:hover { transform: translateY(-1px); }
+/* --- Buttons: instant feedback on press --- */
+.btn {
+  transition:
+    background  160ms ease-out,
+    color       160ms ease-out,
+    border-color 160ms ease-out,
+    box-shadow  160ms ease-out,
+    transform   160ms var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
 
-/* Hero featured card hover */
-.hero-featured { transition: transform .3s, box-shadow .3s; }
-.hero-featured:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 40px 60px -25px rgba(0,76,115,.28),
-    0 10px 20px -8px rgba(0,76,115,.12);
+.nav-cta:active  { transform: scale(0.97) !important; }
+.hero-featured-cta:active { transform: scale(0.97); }
+
+/* --- Transitions: specific properties, never "all" --- */
+.glass-card {
+  transition: box-shadow 200ms var(--ease-out);
+}
+.hero-featured {
+  transition: box-shadow 200ms var(--ease-out);
+}
+.hero-featured-cta {
+  transition:
+    background   160ms ease-out,
+    transform    160ms var(--ease-out);
+}
+.team-card {
+  transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+}
+.service-card .service-ico {
+  transition: color 160ms ease-out, transform 220ms var(--ease-out);
+}
+.footer a, .footer li {
+  transition: color 160ms ease-out;
+}
+.nav-links a {
+  transition: background 160ms ease-out, color 160ms ease-out;
 }
 
-/* Team card hover */
-.team-card { transition: transform .3s, box-shadow .3s; }
-.team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -20px rgba(0,76,115,.22);
+/* --- Service card inner lift: fast, responsive --- */
+.service-card-inner {
+  transition: transform 200ms var(--ease-out);
+}
+/* --- Service card bg: fast --- */
+.service-card {
+  transition: background 180ms ease-out;
 }
 
-/* Service card icon — subtle */
-.service-card .service-ico { transition: color .2s, transform .3s; }
-.service-card:hover .service-ico { transform: translateY(-2px); color: var(--cyan); }
+/* --- Hover effects: desktop only (no stuck states on touch) --- */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover              { transform: translateY(-2px); }
+  .btn:active             { transform: scale(0.97); }
+
+  .btn-magenta:hover {
+    box-shadow: 0 26px 50px -16px rgba(236,0,140,.75), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .nav-cta:hover           { transform: translateY(-1px); }
+  .hero-featured-cta:hover { background: var(--magenta-deep); transform: translateY(-1px); }
+
+  .hero-featured:hover {
+    box-shadow:
+      0 40px 60px -25px rgba(0,76,115,.28),
+      0 10px 20px -8px rgba(0,76,115,.12);
+  }
+
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(0,76,115,.22);
+  }
+
+  .service-card:hover .service-card-inner { transform: translateY(-4px); }
+  .service-card:hover .service-ico        { transform: rotate(-6deg); color: var(--cyan); }
+  .service-card:hover::before             { color: var(--cyan-deep); }
+
+  .footer a:hover        { color: var(--cyan); }
+  .footer-legal a:hover  { color: var(--cyan); }
+  .nav-links a:hover     { background: rgba(255,255,255,.75); color: var(--cyan-deep); }
+  .nav-links a:hover .num { color: var(--cyan); }
+  .nav-cta:hover::before  { transform: translateX(120%); }
+  .btn-magenta:hover::before { transform: translateX(120%); }
+}
