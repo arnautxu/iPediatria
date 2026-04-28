@@ -16,6 +16,13 @@
 </head>
 <body>
 
+  <!-- SVG sprite -->
+  <svg aria-hidden="true" focusable="false" style="display:none">
+    <symbol id="ico-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </symbol>
+  </svg>
+
   <!-- Stage editorial: noise + detalls -->
   <div class="stage" aria-hidden="true">
     <div class="grain"></div>
@@ -31,7 +38,7 @@
   <header class="nav-wrap">
     <nav class="nav glass">
       <a href="#inici" class="logo">
-        <img src="logo.png" alt="iPediatria & iDoctor · Atenció mèdica familiar" class="logo-img">
+        <img src="logo.png" alt="iPediatria & iDoctor · Atenció mèdica familiar" class="logo-img" width="85" height="44">
       </a>
 
       <button class="nav-toggle" aria-label="Obrir menú" aria-expanded="false">
@@ -61,6 +68,13 @@
           </div>
         </li>
 
+        <li class="nav-wa-li">
+          <a href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer" class="nav-wa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+            <span data-i18n="nav.wa">Domicili</span>
+          </a>
+        </li>
+
         <li class="nav-cta-li">
           <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="nav-cta">
             <span class="nav-cta-dot"></span>
@@ -71,6 +85,8 @@
       </ul>
     </nav>
   </header>
+
+  <main>
 
   <!-- HERO -->
   <section id="inici" class="hero">
@@ -100,6 +116,10 @@
             <span data-i18n="hero.cta">Accedir al consultori online</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
+          <a href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+            <span data-i18n="hero.wa">Demanar visita a domicili</span>
+          </a>
         </div>
       </div>
 
@@ -110,13 +130,13 @@
             <span data-i18n="featured.head">Consultori online · En directe</span>
           </div>
           <div class="hero-featured-body">
-            <div class="avatar-stack">
+            <div class="avatar-stack" aria-hidden="true">
               <div class="avatar a1">IO</div>
               <div class="avatar a2">PP</div>
               <div class="avatar a3">FA</div>
             </div>
             <p data-i18n="featured.body">La Dra. Olabegoya i l'equip us atenen des de casa, avui.</p>
-            <div class="wave">
+            <div class="wave" aria-hidden="true">
               <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
             <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="hero-featured-cta">
@@ -129,13 +149,12 @@
 
     </div>
 
-    <p class="hero-proof stagger" style="--d:7" data-i18n-html="hero.proof">
-      <strong>Visites a domicili</strong> · tota la Costa Brava
-      <span class="sep" aria-hidden="true"></span>
-      <strong>Consultori online</strong> · 7 a 24 h tots els dies
-      <span class="sep" aria-hidden="true"></span>
-      Des de 2010 a Palafrugell i comarca
-    </p>
+    <div class="hero-marquee stagger" style="--d:7" role="complementary" aria-label="Resum del servei">
+      <div class="hero-marquee-track">
+        <span class="hero-proof-item" data-i18n-html="hero.proof"><strong>Visites a domicili</strong> · tota la Costa Brava <span class="sep" aria-hidden="true"></span> <strong>Consultori online</strong> · 7 a 24 h tots els dies <span class="sep" aria-hidden="true"></span> Des de 2010 a Palafrugell i comarca <span class="sep" aria-hidden="true"></span></span>
+        <span class="hero-proof-item" data-i18n-html="hero.proof" aria-hidden="true"><strong>Visites a domicili</strong> · tota la Costa Brava <span class="sep" aria-hidden="true"></span> <strong>Consultori online</strong> · 7 a 24 h tots els dies <span class="sep" aria-hidden="true"></span> Des de 2010 a Palafrugell i comarca <span class="sep" aria-hidden="true"></span></span>
+      </div>
+    </div>
 
   </section>
 
@@ -166,7 +185,7 @@
 
         <article class="service-card featured reveal" data-num="02">
           <div class="service-card-inner">
-            <span class="badge">Destacat</span>
+            <span class="badge" data-i18n="badge.featured">Destacat</span>
             <div class="service-ico">
               <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M17 9l4-2v10l-4-2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
             </div>
@@ -281,6 +300,7 @@
             alt="App iPediatria en tres pantalles: selecció de metge, videoconsulta i serveis disponibles"
             class="consultori-mockup"
             width="900"
+            height="1951"
             loading="lazy"
           >
         </div>
@@ -372,10 +392,16 @@
             </span>
             <span class="loc-chip" data-i18n="s4.l1.chip2">Reemborsable per mútues</span>
           </div>
-          <a class="loc-phone" href="tel:+34605166166">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            +34 605 166 166
-          </a>
+          <div class="loc-actions">
+            <a class="loc-phone" href="tel:+34605166166">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A20 20 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2.1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              +34 605 166 166
+            </a>
+            <a class="loc-whatsapp" href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+              <span data-i18n="s4.l1.wa">Demanar per WhatsApp</span>
+            </a>
+          </div>
         </article>
 
         <article class="location-card secondary reveal">
@@ -403,7 +429,7 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="section testimonials-section">
+  <section id="testimonis" class="section testimonials-section">
     <div class="container">
 
       <header class="section-head reveal centered">
@@ -480,7 +506,7 @@
           <ul class="contact-list">
             <li>
               <span class="c-label" data-i18n="s5.c1.label">WhatsApp · Domicili</span>
-              <a href="tel:+34605166166" class="c-value">+34 605 166 166</a>
+              <a href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer" class="c-value">+34 605 166 166</a>
             </li>
             <li>
               <span class="c-label" data-i18n="s5.c2.label">Palafrugell</span>
@@ -494,17 +520,17 @@
         </div>
 
         <form class="form glass-card" onsubmit="handleForm(event)">
-          <label>
+          <label for="form-name">
             <span data-i18n="form.name">Nom</span>
-            <input type="text" required placeholder="El teu nom" data-i18n-placeholder="form.name.ph">
+            <input type="text" id="form-name" name="name" autocomplete="name" required placeholder="El teu nom" data-i18n-placeholder="form.name.ph">
           </label>
-          <label>
+          <label for="form-email">
             <span data-i18n="form.email">Correu electrònic</span>
-            <input type="email" required placeholder="email@exemple.com" data-i18n-placeholder="form.email.ph">
+            <input type="email" id="form-email" name="email" autocomplete="email" required placeholder="email@exemple.com" data-i18n-placeholder="form.email.ph">
           </label>
-          <label>
+          <label for="form-msg">
             <span data-i18n="form.msg">Missatge</span>
-            <textarea rows="4" required placeholder="Explica'ns com podem ajudar-te" data-i18n-placeholder="form.msg.ph"></textarea>
+            <textarea id="form-msg" name="message" rows="4" required placeholder="Explica'ns com podem ajudar-te" data-i18n-placeholder="form.msg.ph"></textarea>
           </label>
           <button type="submit" class="btn btn-magenta">
             <span data-i18n="form.submit">Enviar consulta</span>
@@ -517,6 +543,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -526,10 +554,16 @@
           <em>La salut</em> és la base<br>
           de la <em class="mag">felicitat.</em>
         </h2>
-        <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta">
-          <span data-i18n="footer.cta">Consultori online</span>
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="footer-ctas">
+          <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="btn btn-magenta">
+            <span data-i18n="footer.cta">Consultori online</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+            <span data-i18n="footer.wa">Visita a domicili</span>
+          </a>
+        </div>
       </div>
 
       <div class="footer-grid">
@@ -562,15 +596,27 @@
       <div class="footer-bottom">
         <span>© <span id="year"></span> iPediatria &amp; iDoctor · Tots els drets reservats.</span>
         <span class="footer-legal">
-          <a href="#" data-i18n="footer.legal">Avís legal</a> · <a href="#" data-i18n="footer.privacy">Privacitat</a> · <a href="#" data-i18n="footer.cookies">Cookies</a>
+          <a href="legal.html" data-i18n="footer.legal">Avís legal</a> · <a href="privacy.html" data-i18n="footer.privacy">Privacitat</a> · <a href="cookies.html" data-i18n="footer.cookies">Cookies</a>
         </span>
       </div>
 
     </div>
   </footer>
 
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Avís de cookies">
+    <div class="cookie-banner-text">
+      <p>Usem cookies pròpies i de tercers (Adobe Fonts) per al funcionament del lloc. Pots acceptar-les totes o limitar-les a les estrictament necessàries. <a href="cookies.html" data-i18n="footer.cookies">Més informació</a></p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="btn-reject" id="cookie-reject">Només necessàries</button>
+      <button class="btn-accept" id="cookie-accept">Acceptar-ho tot</button>
+    </div>
+  </div>
+
   <script src="translations.js"></script>
   <script src="script.js" defer></script>
+  <script src="cookie-consent.js" defer></script>
   <!-- Vercel Analytics -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de cookies · iPediatria & iDoctor</title>
+  <meta name="description" content="Política de cookies d'iPediatria SLP. Informació sobre les cookies que utilitza aquest lloc web i com gestionar-les.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/xpf2vbk.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal-hero {
+      padding: clamp(120px, 14vw, 180px) 0 clamp(48px, 6vw, 72px);
+      background: var(--cream);
+    }
+    .legal-hero .container { max-width: 760px; }
+    .legal-hero .eyebrow { display: block; margin-bottom: 16px; }
+    .legal-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      color: var(--ink-deep);
+    }
+    .legal-hero p {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--ink-3);
+    }
+    .legal-body {
+      padding: clamp(48px, 6vw, 80px) 0 clamp(80px, 10vw, 140px);
+    }
+    .legal-body .container { max-width: 760px; }
+    .legal-article h2 {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 700;
+      color: var(--ink-deep);
+      letter-spacing: -.02em;
+      margin: 48px 0 16px;
+      padding-top: 48px;
+      border-top: 1px solid var(--rule);
+    }
+    .legal-article h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+    .legal-article p, .legal-article li {
+      font-size: 15.5px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      max-width: 68ch;
+    }
+    .legal-article p + p { margin-top: 14px; }
+    .legal-article ul {
+      margin: 14px 0 14px 20px;
+      display: grid;
+      gap: 6px;
+      list-style: disc;
+    }
+    .legal-article a { color: var(--cyan-deep); text-decoration: underline; text-underline-offset: 3px; }
+    .legal-article a:hover { color: var(--cyan); }
+    .legal-article strong { color: var(--ink-deep); font-weight: 600; }
+    /* Cookie table */
+    .cookie-table-wrap { overflow-x: auto; margin: 20px 0; }
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .cookie-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    .cookie-table td {
+      padding: 12px 14px;
+      color: var(--ink-2);
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .cookie-table tr:last-child td { border-bottom: none; }
+    .cookie-table tr:hover td { background: var(--paper); }
+    .cookie-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--r-pill);
+    }
+    .cookie-tag.tecnica { background: var(--cyan-soft); color: var(--cyan-deep); }
+    .cookie-tag.tercers { background: var(--cream-2); color: var(--ink-2); }
+    .browser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .browser-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      text-decoration: none !important;
+      color: var(--ink-2) !important;
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color .2s, background .2s;
+    }
+    .browser-link:hover { border-color: var(--cyan); background: var(--paper); }
+    .browser-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .legal-nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .legal-nav a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--rule);
+      border-radius: var(--r-pill);
+      transition: border-color .2s, color .2s;
+    }
+    .legal-nav a:hover { border-color: var(--cyan); color: var(--cyan-deep); }
+    .legal-nav a.current { border-color: var(--cyan-deep); color: var(--cyan-deep); }
+  </style>
+</head>
+<body>
+
+  <!-- SVG sprite -->
+  <svg aria-hidden="true" focusable="false" style="display:none">
+    <symbol id="ico-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#contingut">Salta al contingut</a>
+
+  <header class="nav-wrap">
+    <nav class="nav glass">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="iPediatria & iDoctor · Atenció mèdica familiar" class="logo-img" width="85" height="44">
+      </a>
+      <button class="nav-toggle" aria-label="Obrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html#ajuda">Com t'ajudem</a></li>
+        <li><a href="index.html#equip">L'equip</a></li>
+        <li><a href="index.html#on-estem">On estem</a></li>
+        <li><a href="index.html#contacte">Pregunta'ns</a></li>
+        <li class="nav-wa-li">
+          <a href="https://wa.me/34605166166" target="_blank" rel="noopener noreferrer" class="nav-wa">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+            <span>Domicili</span>
+          </a>
+        </li>
+        <li class="nav-cta-li">
+          <a href="https://ipediatria.imedicplatform.com/" target="_blank" rel="noopener" class="nav-cta">
+            <span class="nav-cta-dot"></span>
+            <span>Consultori online</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contingut">
+
+    <div class="legal-hero">
+      <div class="container">
+        <span class="eyebrow">LSSI-CE · RGPD</span>
+        <h1>Política de cookies</h1>
+        <p>Darrera actualització: abril de 2025</p>
+      </div>
+    </div>
+
+    <div class="legal-body">
+      <div class="container">
+        <article class="legal-article">
+
+          <h2>1. Què és una cookie?</h2>
+          <p>Una cookie és un fitxer de text petit que un lloc web emmagatzema al vostre dispositiu (ordinador, telèfon o tauleta) quan el visiteu. Les cookies s'utilitzen àmpliament per fer funcionar els llocs web, millorar-ne l'eficiència i proporcionar informació als propietaris del lloc.</p>
+          <p>En compliment del que estableix l'article 22.2 de la Llei 34/2002 de serveis de la societat de la informació (LSSI-CE) i el Reglament General de Protecció de Dades (RGPD), us informem detalladament sobre les cookies que utilitza aquest lloc web.</p>
+
+          <h2>2. Cookies que utilitza aquest lloc web</h2>
+          <p>Aquest lloc web utilitza un nombre molt reduït de tecnologies d'emmagatzematge local. A continuació es detalla cadascuna:</p>
+
+          <div class="cookie-table-wrap">
+            <table class="cookie-table">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Proveïdor</th>
+                  <th>Tipus</th>
+                  <th>Durada</th>
+                  <th>Finalitat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>ipediatria-lang</code></td>
+                  <td>iPediatria SLP</td>
+                  <td><span class="cookie-tag tecnica">Tècnica</span></td>
+                  <td>Persistent (localStorage)</td>
+                  <td>Recorda l'idioma seleccionat per l'usuari (CA / EN / RU) entre sessions.</td>
+                </tr>
+                <tr>
+                  <td>Dades analítiques</td>
+                  <td>Vercel Analytics</td>
+                  <td><span class="cookie-tag tecnica">Tècnica</span></td>
+                  <td>Sessió (sense cookies)</td>
+                  <td>Estadístiques d'ús agregades i anonimitzades (pàgines visitades, país, dispositiu). No emmagatzema cookies ni dades personals identificables.</td>
+                </tr>
+                <tr>
+                  <td>Cookies de fonts</td>
+                  <td>Adobe Fonts (Typekit)</td>
+                  <td><span class="cookie-tag tercers">Tercers</span></td>
+                  <td>Variable (fins a 6 mesos)</td>
+                  <td>Adobe pot emmagatzemar cookies tècniques per servir les tipografies del lloc web. Consulteu la <a href="https://www.adobe.com/privacy/policy.html" target="_blank" rel="noopener noreferrer">política d'Adobe</a>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Aquest lloc web <strong>no utilitza cookies de seguiment, publicitàries ni de perfil</strong> de cap mena. No es comparteix cap dada personal amb anunciants.</p>
+
+          <h2>3. Cookies estrictament necessàries</h2>
+          <p>La cookie <code>ipediatria-lang</code> és estrictament necessària per al funcionament correcte del lloc web, ja que permet que la interfície es mostri en l'idioma que l'usuari ha triat prèviament. D'acord amb la normativa vigent, no requereix consentiment previ per al seu ús.</p>
+          <p>La tecnologia d'analítica de Vercel Analytics no utilitza cookies i recull únicament dades agrupades que no permeten identificar l'usuari, per la qual cosa tampoc requereix consentiment.</p>
+
+          <h2>4. Com gestionar les cookies</h2>
+          <p>Podeu configurar el vostre navegador per bloquejar, eliminar o ser avisat quan es rep una cookie. Tingueu en compte que si desactiveu les cookies, algunes funcionalitats del lloc (com la memòria d'idioma) podrien deixar de funcionar correctament.</p>
+          <p>Instruccions per gestionar les cookies als principals navegadors:</p>
+
+          <div class="browser-grid">
+            <a class="browser-link" href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h8.5M3.5 8H12M7 20l4.5-7.8M16.9 4.2L12.5 12" stroke="currentColor" stroke-width="1.5"/></svg>
+              Chrome
+            </a>
+            <a class="browser-link" href="https://support.mozilla.org/ca/kb/galetes-informacio-que-llocs-web-emmagatzemen-vost" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 2c4 3 6 6 6 10s-2 7-6 10" stroke="currentColor" stroke-width="1.5"/><path d="M12 2c-4 3-6 6-6 10s2 7 6 10" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20" stroke="currentColor" stroke-width="1.5"/></svg>
+              Firefox
+            </a>
+            <a class="browser-link" href="https://support.apple.com/ca-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.5"/><path d="M16 8l-8 8M8 8l8 8" stroke="currentColor" stroke-width="1.5"/></svg>
+              Safari
+            </a>
+            <a class="browser-link" href="https://support.microsoft.com/ca-es/windows/microsoft-edge-dades-de-navegaci%C3%B3-i-privadesa-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12c0-5 4-9 9-9a9 9 0 016.4 2.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M21 12c0 5-4 9-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 12c0-2.2 1.8-4 4-4 3.5 0 5 2.5 5 4H8z" stroke="currentColor" stroke-width="1.5"/></svg>
+              Edge
+            </a>
+          </div>
+
+          <h2>5. Més informació</h2>
+          <p>Per a qualsevol consulta relacionada amb l'ús de cookies en aquest lloc web, podeu contactar amb nosaltres a <a href="mailto:info@ipediatria.cat">info@ipediatria.cat</a>.</p>
+          <p>Podeu consultar també la guia sobre cookies de l'<strong>Agència Espanyola de Protecció de Dades</strong> a <a href="https://www.aepd.es/guias/guia-cookies.pdf" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.</p>
+
+          <nav class="legal-nav" aria-label="Pàgines legals">
+            <a href="legal.html">Avís legal</a>
+            <a href="privacy.html">Política de privacitat</a>
+            <a href="cookies.html" class="current">Política de cookies</a>
+          </nav>
+
+        </article>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">
+            <img src="logo.png" alt="iPediatria & iDoctor" class="logo-img footer-logo-img" width="85" height="44">
+          </a>
+          <p class="footer-tag">Un nou concepte d'atenció mèdica familiar i pediàtrica, des de 2010.</p>
+        </div>
+        <div>
+          <h4>Navegació</h4>
+          <ul>
+            <li><a href="index.html#ajuda">Com t'ajudem</a></li>
+            <li><a href="index.html#equip">L'equip</a></li>
+            <li><a href="index.html#on-estem">On estem</a></li>
+            <li><a href="index.html#contacte">Pregunta'ns</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacte</h4>
+          <ul>
+            <li>Plaça de Catalunya, 5 · Palafrugell</li>
+            <li>Visites a domicili · 7 a 24 h</li>
+            <li><a href="tel:+34605166166">+34 605 166 166</a></li>
+            <li><a href="mailto:info@ipediatria.cat">info@ipediatria.cat</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> iPediatria &amp; iDoctor · Tots els drets reservats.</span>
+        <span class="footer-legal">
+          <a href="legal.html">Avís legal</a> · <a href="privacy.html">Privacitat</a> · <a href="cookies.html">Cookies</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Avís de cookies">
+    <div class="cookie-banner-text">
+      <p>Usem cookies pròpies i de tercers (Adobe Fonts) per al funcionament del lloc. Pots acceptar-les totes o limitar-les a les estrictament necessàries. <a href="cookies.html">Més informació</a></p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button class="btn-reject" id="cookie-reject">Només necessàries</button>
+      <button class="btn-accept" id="cookie-accept">Acceptar-ho tot</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => nav?.classList.toggle('scrolled', scrollY > 20), { passive: true });
+    const toggle = document.querySelector('.nav-toggle');
+    const links  = document.querySelector('.nav-links');
+    toggle?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+  <script src="cookie-consent.js" defer></script>
+</body>
+</html>

@@ -8,6 +8,8 @@ const TRANSLATIONS = {
     'nav.where':   'On estem',
     'nav.contact': "Pregunta'ns",
     'nav.cta':     'Consultori online',
+    'nav.wa':      'Domicili',
+    'footer.wa':   'Visita a domicili',
 
     'hero.eyebrow':    'Pediatria & Medicina familiar · Visites a domicili i online',
     'hero.meta':       'No. 01 — Un nou concepte',
@@ -15,11 +17,14 @@ const TRANSLATIONS = {
     'hero.title.l2':   '<em>desenvolupament</em> i de la <em class="mag">felicitat</em>.',
     'hero.lead':       "Un equip de professionals dedicats a entendre les necessitats de cada família. Sense cues, 7 dies a la setmana, <strong>a domicili</strong> o al <strong>consultori online</strong>.",
     'hero.cta':        'Accedir al consultori online',
+    'hero.wa':         'Demanar visita a domicili',
     'hero.proof':      '<strong>Visites a domicili</strong> · tota la Costa Brava <span class="sep" aria-hidden="true"></span> <strong>Consultori online</strong> · 7 a 24 h tots els dies <span class="sep" aria-hidden="true"></span> Des de 2010 a Palafrugell i comarca',
 
     'featured.head':   'Consultori online · En directe',
     'featured.body':   "La Dra. Olabegoya i l'equip us atenen des de casa, avui.",
     'featured.cta':    'Accedir ara',
+
+    'badge.featured': 'Destacat',
 
     's1.eyebrow': "Com t'ajudem",
     's1.h2':      '<em>A domicili</em> o al <em class="mag">consultori online</em>, sense cues.',
@@ -70,6 +75,7 @@ const TRANSLATIONS = {
     's4.l1.addr':   'Tota la Costa Brava<br>7 dies a la setmana',
     's4.l1.chip1':  'Tots els dies · 7 a 24 h',
     's4.l1.chip2':  'Reemborsable per mútues',
+    's4.l1.wa':     'Demanar per WhatsApp',
     's4.l2.h3':     'Palafrugell',
     's4.l2.tag':    'Consulta presencial',
     's4.l2.addr':   'Plaça de Catalunya, 5 baixos<br>17200 Palafrugell',
@@ -128,6 +134,8 @@ const TRANSLATIONS = {
     'nav.where':   'Find us',
     'nav.contact': 'Ask us',
     'nav.cta':     'Online clinic',
+    'nav.wa':      'Home visit',
+    'footer.wa':   'Book a home visit',
 
     'hero.eyebrow':  'Paediatrics & Family Medicine · Home visits and online',
     'hero.meta':     'No. 01 — A new concept',
@@ -135,11 +143,14 @@ const TRANSLATIONS = {
     'hero.title.l2': '<em>development</em> and <em class="mag">happiness</em>.',
     'hero.lead':     'A team of professionals dedicated to understanding the needs of every family. No queues, 7 days a week, <strong>at home</strong> or at the <strong>online clinic</strong>.',
     'hero.cta':      'Access the online clinic',
+    'hero.wa':       'Book a home visit',
     'hero.proof':    '<strong>Home visits</strong> · all along the Costa Brava <span class="sep" aria-hidden="true"></span> <strong>Online clinic</strong> · 7 am – midnight every day <span class="sep" aria-hidden="true"></span> Serving Palafrugell since 2010',
 
     'featured.head': 'Online clinic · Live now',
     'featured.body': 'Dr. Olabegoya and the team are available from home, today.',
     'featured.cta':  'Access now',
+
+    'badge.featured': 'Featured',
 
     's1.eyebrow': 'How we help',
     's1.h2':      '<em>At home</em> or at the <em class="mag">online clinic</em>, no queues.',
@@ -190,6 +201,7 @@ const TRANSLATIONS = {
     's4.l1.addr':  'All along the Costa Brava<br>7 days a week',
     's4.l1.chip1': 'Every day · 7 am – midnight',
     's4.l1.chip2': 'Reimbursable by insurers',
+    's4.l1.wa':    'Request via WhatsApp',
     's4.l2.h3':    'Palafrugell',
     's4.l2.tag':   'In-person consultation',
     's4.l2.addr':  'Plaça de Catalunya, 5<br>17200 Palafrugell',
@@ -248,6 +260,8 @@ const TRANSLATIONS = {
     'nav.where':   'Где мы',
     'nav.contact': 'Задать вопрос',
     'nav.cta':     'Онлайн-кабинет',
+    'nav.wa':      'На дом',
+    'footer.wa':   'Записаться на дом',
 
     'hero.eyebrow':  'Педиатрия и семейная медицина · Визиты на дом и онлайн',
     'hero.meta':     '№ 01 — Новая концепция',
@@ -255,11 +269,14 @@ const TRANSLATIONS = {
     'hero.title.l2': '<em>развития</em> и <em class="mag">счастья</em>.',
     'hero.lead':     'Команда профессионалов, посвящённых нуждам каждой семьи. Без очередей, 7 дней в неделю, <strong>на дому</strong> или в <strong>онлайн-кабинете</strong>.',
     'hero.cta':      'Войти в онлайн-кабинет',
+    'hero.wa':       'Записаться на дом',
     'hero.proof':    '<strong>Визиты на дом</strong> · вся Коста-Брава <span class="sep" aria-hidden="true"></span> <strong>Онлайн-кабинет</strong> · с 7 до 24 ч каждый день <span class="sep" aria-hidden="true"></span> Работаем с 2010 г. в Палафружеле',
 
     'featured.head': 'Онлайн-кабинет · Сейчас онлайн',
     'featured.body': 'Д-р Олабегоя и команда принимают из дома, сегодня.',
     'featured.cta':  'Войти сейчас',
+
+    'badge.featured': 'Рекомендуем',
 
     's1.eyebrow': 'Как мы помогаем',
     's1.h2':      '<em>На дому</em> или в <em class="mag">онлайн-кабинете</em>, без очередей.',
@@ -310,6 +327,7 @@ const TRANSLATIONS = {
     's4.l1.addr':  'Вся Коста-Брава<br>7 дней в неделю',
     's4.l1.chip1': 'Каждый день · 7–24 ч',
     's4.l1.chip2': 'Возмещается страховкой',
+    's4.l1.wa':    'Написать в WhatsApp',
     's4.l2.h3':    'Палафружель',
     's4.l2.tag':   'Очный приём',
     's4.l2.addr':  'Plaça de Catalunya, 5<br>17200 Palafrugell',

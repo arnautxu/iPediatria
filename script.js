@@ -126,3 +126,44 @@ const spy = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-35% 0px -55% 0px' });
 sections.forEach((s) => spy.observe(s));
+
+// ============================================================
+// Hero featured card — mouse-tracking tilt
+// ============================================================
+(function () {
+  const card = document.querySelector('.hero-featured');
+  if (!card) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  let raf = null;
+  let targetRx = 0, targetRy = 0, currentRx = 0, currentRy = 0;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function tick() {
+    currentRx = lerp(currentRx, targetRx, 0.12);
+    currentRy = lerp(currentRy, targetRy, 0.12);
+    card.style.transform =
+      `perspective(700px) rotateX(${currentRx.toFixed(3)}deg) rotateY(${currentRy.toFixed(3)}deg) translateZ(6px)`;
+    if (Math.abs(currentRx - targetRx) > 0.01 || Math.abs(currentRy - targetRy) > 0.01) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = null;
+    }
+  }
+
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+    const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+    targetRy =  dx * 7;
+    targetRx = -dy * 5;
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    targetRx = 0;
+    targetRy = 0;
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
+})();
