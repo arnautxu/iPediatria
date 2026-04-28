@@ -136,6 +136,7 @@ sections.forEach((s) => spy.observe(s));
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
   let raf = null;
+  let ready = false;
   let targetRx = 0, targetRy = 0, currentRx = 0, currentRy = 0;
 
   function lerp(a, b, t) { return a + (b - a) * t; }
@@ -153,6 +154,12 @@ sections.forEach((s) => spy.observe(s));
   }
 
   card.addEventListener('mousemove', (e) => {
+    // Cancel entry animation on first interaction so it doesn't fight the tilt
+    if (!ready) {
+      card.style.animation = 'none';
+      card.style.opacity   = '1';
+      ready = true;
+    }
     const r = card.getBoundingClientRect();
     const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
     const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);

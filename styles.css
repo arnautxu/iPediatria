@@ -1492,7 +1492,7 @@ input:focus-visible, textarea:focus-visible {
   transition: box-shadow 200ms var(--ease-out);
 }
 .hero-featured {
-  transition: box-shadow 200ms var(--ease-out), transform .5s var(--ease-out);
+  transition: box-shadow 200ms var(--ease-out);
   will-change: transform;
 }
 .hero-featured-cta {
