@@ -472,6 +472,16 @@ input:focus-visible, textarea:focus-visible {
   background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.4) 50%, transparent 65%);
   transform: translateX(-120%); transition: transform .8s; z-index: -1;
 }
+.btn-cyan {
+  color: #fff;
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-deep));
+  box-shadow: 0 20px 40px -16px rgba(0,174,239,.55), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.btn-cyan::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform .8s; z-index: -1;
+}
 .btn-ghost {
   color: var(--ink);
   background: transparent;
@@ -1530,6 +1540,11 @@ input:focus-visible, textarea:focus-visible {
   .btn-magenta:hover {
     box-shadow: 0 26px 50px -16px rgba(236,0,140,.75), inset 0 1px 0 rgba(255,255,255,.4);
   }
+  .btn-cyan:hover {
+    box-shadow: 0 26px 50px -16px rgba(0,174,239,.7), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .btn-cyan:hover::before { transform: translateX(120%); }
+  .btn-magenta:hover::before { transform: translateX(120%); }
   .btn-ghost:hover {
     background: var(--ink);
     color: var(--cream);
@@ -1561,7 +1576,6 @@ input:focus-visible, textarea:focus-visible {
   .footer-legal a:hover  { color: var(--cyan); }
   .nav-links a:not(.nav-cta):not(.nav-wa):hover { background: rgba(255,255,255,.75); color: var(--cyan-deep); }
   .nav-cta:hover::before  { transform: translateX(120%); }
-  .btn-magenta:hover::before { transform: translateX(120%); }
 
   /* Arrow slide on hover — confirm directionality */
   .btn:not(.btn-wa) svg,
