@@ -33,12 +33,20 @@ export default function Navigation() {
   const langRef = useRef(null);
   const lastY = useRef(0);
 
-  // Scroll-aware: hide on scroll-down past 120px, show on scroll-up.
+  // Scroll-aware: hide on scroll-down past 140px, show on scroll-up,
+  // and reveal automatically when the user stops scrolling (idle 220ms).
   useEffect(() => {
+    let idleTimer;
+
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
-      // Don't hide if mobile menu is open
+
+      // Reveal as soon as scrolling stops
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => setHidden(false), 220);
+
+      // Don't change hide state if mobile menu is open
       if (open) return;
       const goingDown = y > lastY.current && y > 140;
       const goingUp = y < lastY.current;
@@ -46,9 +54,13 @@ export default function Navigation() {
       else if (goingUp) setHidden(false);
       lastY.current = y;
     };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(idleTimer);
+    };
   }, [open]);
 
   // Active section detection (home only)
