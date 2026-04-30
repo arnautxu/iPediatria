@@ -15,27 +15,37 @@
   overflow: hidden;
   isolation: isolate;
 }
+/* Auroras: radial gradients are already soft — `filter: blur()` here was
+   creating crescent artifacts at the rounded corners when composited with
+   the spotlight's mix-blend-mode. Use a larger box + softer gradient stop
+   instead, kept inside the rounded mask. */
 .wrap::before {
   content: '';
   position: absolute;
-  inset: -40% -20% auto auto;
-  width: 60%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(0,174,239,.42), transparent 70%);
-  filter: blur(20px);
+  inset: -10% -10% auto auto;
+  width: 70%;
+  height: 90%;
+  background: radial-gradient(ellipse at 70% 30%,
+    rgba(0, 174, 239, 0.45) 0%,
+    rgba(0, 174, 239, 0.15) 35%,
+    transparent 65%);
   pointer-events: none;
   animation: aurora-cyan 14s ease-in-out infinite alternate;
+  border-radius: inherit;
 }
 .wrap::after {
   content: '';
   position: absolute;
-  inset: auto auto -40% -20%;
-  width: 60%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(236,0,140,.32), transparent 70%);
-  filter: blur(20px);
+  inset: auto auto -10% -10%;
+  width: 70%;
+  height: 90%;
+  background: radial-gradient(ellipse at 30% 70%,
+    rgba(236, 0, 140, 0.38) 0%,
+    rgba(236, 0, 140, 0.12) 35%,
+    transparent 65%);
   pointer-events: none;
   animation: aurora-magenta 16s ease-in-out infinite alternate;
+  border-radius: inherit;
 }
 
 @keyframes aurora-cyan {
@@ -62,14 +72,14 @@
   pointer-events: none;
   opacity: 0;
   transform: translate3d(0, 0, 0) translate(-50%, -50%);
+  /* Soft gradient stops replace filter:blur() to avoid corner crescent
+     artifacts when composited against the rounded mask. */
   background:
     radial-gradient(circle at center,
-      rgba(0, 174, 239, 0.55) 0%,
-      rgba(0, 174, 239, 0.22) 25%,
-      rgba(236, 0, 140, 0.18) 50%,
+      rgba(0, 174, 239, 0.42) 0%,
+      rgba(0, 174, 239, 0.18) 22%,
+      rgba(236, 0, 140, 0.12) 45%,
       transparent 65%);
-  filter: blur(50px);
-  mix-blend-mode: screen;
   transition: opacity .55s var(--ease-out);
   z-index: 0;
   will-change: transform, opacity;

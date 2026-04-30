@@ -16,21 +16,30 @@
 
 .accent {
   position: absolute;
-  width: 520px;
-  height: 520px;
+  width: 720px;
+  height: 720px;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: .35;
+  filter: blur(110px);
+  opacity: .42;
+  pointer-events: none;
 }
+/* Positions chosen so the full diffused circle stays on-screen
+   (no hard edge clipped by .stage overflow:hidden). */
 .cyan {
-  background: radial-gradient(circle, var(--cyan), transparent 70%);
-  top: -200px;
-  right: -120px;
+  background: radial-gradient(circle, var(--cyan) 0%, transparent 65%);
+  top: -120px;
+  right: -60px;
 }
 .mag {
-  background: radial-gradient(circle, var(--magenta), transparent 70%);
-  bottom: -240px;
-  left: -180px;
+  background: radial-gradient(circle, var(--magenta) 0%, transparent 65%);
+  bottom: -160px;
+  left: -100px;
+}
+
+@media (max-width: 720px) {
+  .accent { width: 480px; height: 480px; filter: blur(80px); }
+  .cyan { top: -80px; right: -60px; }
+  .mag  { bottom: -120px; left: -80px; }
 }
 
 .ruleTop {

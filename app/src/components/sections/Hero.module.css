@@ -167,8 +167,19 @@
   border: 2px solid #fff;
   margin-left: -10px;
   letter-spacing: .02em;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 76, 115, 0.18);
 }
 .avatar:first-child { margin-left: 0; }
+.avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
 .a1 { background: linear-gradient(135deg, #00AEEF, #008FCB); }
 .a2 { background: linear-gradient(135deg, #EC008C, #C40074); }
 .a3 { background: linear-gradient(135deg, #414042, #1A1B1E); }

@@ -79,7 +79,9 @@ export default function Hero() {
             </div>
             <div className={styles.featuredBody}>
               <div className={styles.avatarStack} aria-hidden="true">
-                <div className={`${styles.avatar} ${styles.a1}`}>IO</div>
+                <div className={`${styles.avatar} ${styles.a1}`}>
+                  <img src="/dra-olabegoya.jpg" alt="" loading="lazy" />
+                </div>
                 <div className={`${styles.avatar} ${styles.a2}`}>PP</div>
                 <div className={`${styles.avatar} ${styles.a3}`}>FA</div>
               </div>
