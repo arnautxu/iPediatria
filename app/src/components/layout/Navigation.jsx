@@ -1,12 +1,9 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useTranslation } from '../../i18n/I18nContext';
 import WhatsAppIcon from '../ui/WhatsAppIcon';
 import styles from './Navigation.module.css';
-
-// Three.js lives only on the home page (where the hero already loads it).
-const NavPulse = lazy(() => import('../../three/NavPulse'));
 
 const PHONE_WA = 'https://wa.me/34605166166';
 const CONSULTORI_URL = 'https://ipediatria.imedicplatform.com/';
@@ -113,13 +110,6 @@ export default function Navigation() {
             height="44"
             className={styles.logoImg}
           />
-          {isHome && !reduced ? (
-            <Suspense fallback={<span className={styles.pulseFallback} aria-hidden="true" />}>
-              <NavPulse size={22} />
-            </Suspense>
-          ) : (
-            <span className={styles.pulseFallback} aria-hidden="true" />
-          )}
         </Link>
 
         <span className={styles.divider} aria-hidden="true" />
