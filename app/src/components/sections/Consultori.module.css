@@ -60,11 +60,12 @@
 }
 .copy :global(.eyebrow) { color: var(--cyan); }
 
-.h2 {
+/* Override global .editorial-h2 ink color — this section is on dark background */
+.copy :global(.editorial-h2) {
   color: var(--cream);
 }
-.h2 :global(em) { color: var(--cyan); }
-.h2 :global(em.mag) { color: var(--magenta); }
+.copy :global(.editorial-h2 em) { color: var(--cyan); }
+.copy :global(.editorial-h2 em.mag) { color: var(--magenta); }
 
 .lead {
   color: rgba(234,244,251,.8);
