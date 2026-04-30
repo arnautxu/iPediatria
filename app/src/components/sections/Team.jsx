@@ -4,7 +4,7 @@ import Reveal from '../ui/Reveal';
 import styles from './Team.module.css';
 
 const TEAM = [
-  { id: 'm1', initials: 'IO', name: 'Dra. Iratxe Olabegoya', idx: '01', color: 'cyan' },
+  { id: 'm1', initials: 'IO', name: 'Dra. Iratxe Olabegoya', idx: '01', color: 'cyan', photo: '/dra-olabegoya.jpg' },
   { id: 'm2', initials: 'PP', name: 'Dr. Pere Plaja',        idx: '02', color: 'mag'  },
   { id: 'm3', initials: 'FA', name: 'Inf. Fina Aguilar',     idx: '03', color: 'ink'  },
 ];
@@ -18,15 +18,26 @@ export default function Team() {
         <SectionHead num="02" eyebrowKey="s3.eyebrow" h2Key="s3.h2" pKey="s3.p" />
 
         <div className={styles.grid}>
-          {TEAM.map(({ id, initials, name, idx, color }, i) => (
+          {TEAM.map(({ id, initials, name, idx, color, photo }, i) => (
             <Reveal
               as="article"
               key={id}
               delay={i * 0.07}
               className={styles.card}
             >
-              <div className={`${styles.portrait} ${styles[color]}`}>
-                <span className={styles.initials}>{initials}</span>
+              <div className={`${styles.portrait} ${styles[color]} ${photo ? styles.hasPhoto : ''}`}>
+                {photo ? (
+                  <img
+                    src={photo}
+                    alt={`Retrat de ${name}`}
+                    className={styles.photo}
+                    loading="lazy"
+                    width="600"
+                    height="510"
+                  />
+                ) : (
+                  <span className={styles.initials}>{initials}</span>
+                )}
                 <span className={styles.idx}>{idx}</span>
               </div>
               <div className={styles.body}>
