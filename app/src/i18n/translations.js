@@ -73,7 +73,7 @@ export const TRANSLATIONS = {
 
     's4.eyebrow':   'On estem',
     's4.h2':        '<em>A casa teva.</em> Al consultori. <em class="mag">En línia.</em>',
-    's4.p':         'Visites a domicili a tota la comarca, consultori online des d'arreu i consulta presencial a Palafrugell. Un sol equip per a tota la família.',
+    's4.p':         "Visites a domicili a tota la comarca, consultori online des d'arreu i consulta presencial a Palafrugell. Un sol equip per a tota la família.",
     's4.l1.h3':     'A domicili',
     's4.l1.tag':    'Tota la comarca',
     's4.l1.addr':   'Tota la Costa Brava<br>7 dies a la setmana',
