@@ -1,13 +1,29 @@
+/* ============================================================
+   Contact — refined form with floating labels, underline focus,
+   inline error states, animated success.
+   ============================================================ */
+
 .wrap {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: clamp(40px, 5vw, 64px);
   align-items: start;
+  margin-top: var(--s-8);
 }
 
-.info { display: flex; flex-direction: column; gap: 18px; }
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
 
-.list { display: grid; gap: 4px; }
+.list {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .list li {
   display: flex;
   flex-direction: column;
@@ -15,70 +31,152 @@
   padding: 18px 0;
   border-bottom: 1px solid var(--rule);
 }
+.list li:last-child { border-bottom: none; }
+
 .label {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 500;
 }
+
 .value {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(20px, 1.6vw, 24px);
-  letter-spacing: -.015em;
+  letter-spacing: -0.015em;
   color: var(--ink);
   transition: color .2s var(--ease-out);
 }
 .value:hover { color: var(--cyan-deep); }
 
+/* Hint card below contact info — gentle reminder for urgencies */
+.hint {
+  display: flex;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background:
+    linear-gradient(180deg,
+      rgba(0, 174, 239, 0.05) 0%,
+      rgba(0, 174, 239, 0.02) 100%);
+  border: 1px solid rgba(0, 174, 239, 0.18);
+  border-radius: var(--r-md);
+  color: var(--ink-2);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.hint svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--cyan-deep);
+  margin-top: 2px;
+}
+.hint p { margin: 0; }
+
+/* ---------- Form ---------- */
+
 .form {
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(255,255,255,.95);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(245, 250, 253, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--r-xl);
   padding: clamp(28px, 3.5vw, 44px);
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 30px 60px -25px rgba(0,76,115,.18);
+  gap: var(--s-4);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-md);
 }
 
-.form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* Field — floating label + animated underline */
+.field {
+  position: relative;
+  display: block;
+  padding-top: 22px;
 }
-.form label > span {
+
+.control {
+  font: inherit;
+  width: 100%;
+  display: block;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  outline: none;
+  resize: vertical;
+  transition: border-color .25s var(--ease-out);
+}
+textarea.control {
+  min-height: 96px;
+  padding-top: 12px;
+}
+.control:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.floatLabel {
+  position: absolute;
+  top: 28px;
+  left: 0;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 500;
-}
-.form input,
-.form textarea {
-  font: inherit;
-  padding: 14px 16px;
-  background: rgba(255,255,255,.85);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-md);
-  color: var(--ink);
-  resize: vertical;
-  font-family: var(--font-sans);
-  transition: border-color .2s var(--ease-out), background .2s var(--ease-out);
-}
-.form input::placeholder,
-.form textarea::placeholder { color: var(--ink-3); }
-.form input:focus,
-.form textarea:focus {
-  outline: none;
-  border-color: var(--cyan-deep);
-  background: #fff;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform .3s var(--ease-out), color .3s var(--ease-out);
 }
 
+/* Float label up when field has content or is focused */
+.field.filled .floatLabel,
+.field:focus-within .floatLabel {
+  transform: translateY(-26px) scale(0.92);
+  color: var(--cyan-deep);
+}
+.field.hasError .floatLabel {
+  color: var(--magenta-deep);
+}
+
+/* Underline that grows on focus */
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--cyan-deep));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .35s var(--ease-out), background .25s var(--ease-out);
+  pointer-events: none;
+}
+.field:focus-within .underline {
+  transform: scaleX(1);
+}
+.field.hasError .underline {
+  background: linear-gradient(90deg, var(--magenta), var(--magenta-deep));
+  transform: scaleX(1);
+}
+
+.error {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--magenta-deep);
+  font-weight: 500;
+}
+
+/* Submit button — sculpted magenta, identical depth treatment as nav CTA */
 .submit {
   display: inline-flex;
   align-items: center;
@@ -88,24 +186,91 @@
   border-radius: var(--r-pill);
   font-weight: 600;
   font-size: 14.5px;
-  background: linear-gradient(135deg, var(--magenta), var(--magenta-deep));
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(180deg, #FF1A9E 0%, var(--magenta) 50%, var(--magenta-deep) 100%);
   color: #fff;
+  text-shadow: 0 1px 1px rgba(120, 0, 70, 0.2);
   align-self: flex-start;
-  box-shadow: 0 20px 40px -16px rgba(236,0,140,.6);
-  transition: box-shadow .25s var(--ease-out), transform .15s var(--ease-out), opacity .25s var(--ease-out);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 -1px 0 rgba(120, 0, 70, 0.3) inset,
+    0 0 0 0.5px rgba(120, 0, 70, 0.4),
+    0 4px 8px -2px rgba(236, 0, 140, 0.3),
+    0 14px 30px -10px rgba(236, 0, 140, 0.6);
+  transition: box-shadow .25s var(--ease-out), transform .15s var(--ease-out), opacity .25s var(--ease-out), filter .25s var(--ease-out);
 }
-.submit:hover { box-shadow: 0 26px 50px -16px rgba(236,0,140,.75); }
-.submit:active { transform: scale(0.97); }
-.submit:disabled { opacity: 0.5; cursor: default; }
+.submit:hover:not(:disabled) {
+  filter: brightness(1.06);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -1px 0 rgba(120, 0, 70, 0.32) inset,
+    0 0 0 0.5px rgba(120, 0, 70, 0.45),
+    0 6px 12px -2px rgba(236, 0, 140, 0.36),
+    0 18px 38px -10px rgba(236, 0, 140, 0.78);
+}
+.submit:active:not(:disabled) { transform: scale(0.97); }
+.submit:disabled { opacity: 0.6; cursor: default; }
 .submit svg { width: 17px; height: 17px; }
 
-.ok {
-  font-size: 14.5px;
+/* Spinner inside submit button while sending */
+.spinner {
+  width: 16px;
+  height: 16px;
+  animation: spin .8s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Animated success state — drawn checkmark + message */
+.success {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background:
+    linear-gradient(180deg,
+      rgba(0, 174, 239, 0.08) 0%,
+      rgba(0, 174, 239, 0.02) 100%);
+  border: 1px solid rgba(0, 174, 239, 0.25);
+  border-radius: var(--r-md);
   color: var(--cyan-deep);
   font-weight: 600;
-  margin-top: -8px;
+  font-size: 14.5px;
+}
+.checkmark {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: var(--cyan-deep);
+}
+.checkCircle {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-circle .7s var(--ease-out) forwards;
+}
+.checkTick {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw-tick .4s var(--ease-out) .55s forwards;
+}
+@keyframes draw-circle {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes draw-tick {
+  to { stroke-dashoffset: 0; }
 }
 
 @media (max-width: 880px) {
   .wrap { grid-template-columns: 1fr; }
+  .submit { align-self: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkCircle, .checkTick, .spinner {
+    animation: none;
+  }
+  .checkCircle, .checkTick { stroke-dashoffset: 0; }
 }

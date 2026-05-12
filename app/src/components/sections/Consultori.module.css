@@ -178,6 +178,72 @@
   justify-content: center;
   perspective: 1400px;
 }
+
+/* LIVE tag — floats over the mockup, signals "real product" */
+.liveTag {
+  position: absolute;
+  top: 4%;
+  right: -4%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px 6px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 174, 239, 0.35);
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.1) inset,
+    0 6px 18px -6px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+.liveDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2EE072;
+  box-shadow: 0 0 6px #2EE072;
+  animation: live-pulse 1.8s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* Subtle diagonal shimmer to suggest screen-content motion */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 48%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.08) 52%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  background-position: 200% 0;
+  animation: shimmer-sweep 6s var(--ease-in-out) infinite;
+  mix-blend-mode: overlay;
+  border-radius: 28px;
+  z-index: 0;
+  opacity: 0.7;
+}
+@keyframes shimmer-sweep {
+  0%   { background-position: 200% 0; }
+  60%  { background-position: -100% 0; }
+  100% { background-position: -100% 0; }
+}
 /* Glow halo behind the mockup — pulses gently */
 .visual::before {
   content: '';
@@ -215,7 +281,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mockup, .visual::before { animation: none; }
+  .mockup, .visual::before, .shimmer, .liveDot { animation: none; }
   .mockup { transform: none; }
 }
 

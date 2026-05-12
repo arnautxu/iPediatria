@@ -11,6 +11,8 @@ export default function Consultori() {
   const reduced = useReducedMotion();
   const wrapRef = useRef(null);
   const spotRef = useRef(null);
+  const visualRef = useRef(null);
+  const mockupRef = useRef(null);
 
   // Cursor-following spotlight: lerped rAF loop, no React state to avoid re-renders.
   // Skipped on touch devices (no hover) and reduced-motion users.
@@ -61,6 +63,68 @@ export default function Consultori() {
     };
   }, [reduced]);
 
+  // Mockup tilt — responds to cursor position within the visual zone.
+  // Adds 3D presence without competing with the spotlight.
+  useEffect(() => {
+    if (reduced) return;
+    const visual = visualRef.current;
+    const mockup = mockupRef.current;
+    if (!visual || !mockup) return;
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
+    let raf;
+    let targetRX = 0, targetRY = 0;
+    let curRX = 0, curRY = 0;
+    let running = false;
+
+    const loop = () => {
+      curRX += (targetRX - curRX) * 0.12;
+      curRY += (targetRY - curRY) * 0.12;
+      mockup.style.transform = `perspective(1400px) rotateX(${curRX}deg) rotateY(${curRY}deg)`;
+      if (running) raf = requestAnimationFrame(loop);
+    };
+
+    const onMove = (e) => {
+      const rect = visual.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to +0.5
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      // Range ±5deg for Y (left/right), ±3deg for X (up/down — inverted)
+      targetRY = px * 10;
+      targetRX = -py * 6;
+      if (!running) {
+        running = true;
+        curRX = targetRX;
+        curRY = targetRY;
+        mockup.style.animation = 'none';
+        loop();
+      }
+    };
+
+    const onLeave = () => {
+      running = false;
+      targetRX = 0;
+      targetRY = 0;
+      cancelAnimationFrame(raf);
+      // Smooth ease back to neutral, then restore float animation
+      mockup.style.transition = 'transform .6s cubic-bezier(0.23, 1, 0.32, 1)';
+      mockup.style.transform = 'perspective(1400px) rotateX(0deg) rotateY(0deg)';
+      setTimeout(() => {
+        if (!mockup) return;
+        mockup.style.transition = '';
+        mockup.style.transform = '';
+        mockup.style.animation = '';
+      }, 650);
+    };
+
+    visual.addEventListener('mousemove', onMove);
+    visual.addEventListener('mouseleave', onLeave);
+    return () => {
+      visual.removeEventListener('mousemove', onMove);
+      visual.removeEventListener('mouseleave', onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, [reduced]);
+
   return (
     <section id="consultori" className="section">
       <div className="container">
@@ -99,8 +163,13 @@ export default function Consultori() {
             </ul>
           </div>
 
-          <div className={styles.visual}>
+          <div className={styles.visual} ref={visualRef}>
+            <span className={styles.liveTag} aria-hidden="true">
+              <span className={styles.liveDot} />
+              LIVE
+            </span>
             <img
+              ref={mockupRef}
               src="/mockup-app.png"
               alt="App iPediatria en tres pantalles: selecció de metge, videoconsulta i serveis disponibles"
               className={styles.mockup}
@@ -108,6 +177,7 @@ export default function Consultori() {
               height="1951"
               loading="lazy"
             />
+            <span className={styles.shimmer} aria-hidden="true" />
           </div>
         </Reveal>
       </div>

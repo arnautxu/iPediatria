@@ -4,9 +4,30 @@ import Reveal from '../ui/Reveal';
 import styles from './Team.module.css';
 
 const TEAM = [
-  { id: 'm1', initials: 'IO', name: 'Dra. Iratxe Olabegoya', idx: '01', color: 'cyan', photo: '/dra-olabegoya.jpg' },
-  { id: 'm2', initials: 'PP', name: 'Dr. Pere Plaja',        idx: '02', color: 'mag'  },
-  { id: 'm3', initials: 'FA', name: 'Inf. Fina Aguilar',     idx: '03', color: 'ink'  },
+  {
+    id: 'm1',
+    initials: 'IO',
+    name: 'Dra. Iratxe Olabegoya',
+    idx: '01',
+    color: 'cyan',
+    photo: '/dra-olabegoya.jpg',
+  },
+  {
+    id: 'm2',
+    initials: 'PP',
+    name: 'Dr. Pere Plaja',
+    idx: '02',
+    color: 'mag',
+    photo: null,
+  },
+  {
+    id: 'm3',
+    initials: 'FA',
+    name: 'Inf. Fina Aguilar',
+    idx: '03',
+    color: 'ink',
+    photo: null,
+  },
 ];
 
 export default function Team() {
@@ -25,7 +46,7 @@ export default function Team() {
               delay={i * 0.07}
               className={styles.card}
             >
-              <div className={`${styles.portrait} ${styles[color]} ${photo ? styles.hasPhoto : ''}`}>
+              <div className={`${styles.portrait} ${styles[color]} ${photo ? styles.hasPhoto : styles.noPhoto}`}>
                 {photo ? (
                   <img
                     src={photo}
@@ -36,7 +57,11 @@ export default function Team() {
                     height="510"
                   />
                 ) : (
-                  <span className={styles.initials}>{initials}</span>
+                  <>
+                    <span className={styles.grain} aria-hidden="true" />
+                    <span className={styles.initials}>{initials}</span>
+                    <span className={styles.soonBadge}>Foto disponible aviat</span>
+                  </>
                 )}
                 <span className={styles.idx}>{idx}</span>
               </div>

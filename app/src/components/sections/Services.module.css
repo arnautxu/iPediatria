@@ -6,14 +6,20 @@
 
 .card {
   position: relative;
-  background: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.85);
+  background:
+    linear-gradient(165deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(245, 250, 253, 0.62) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
   border-radius: var(--r-lg);
   padding: 28px;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out),
-              background .25s var(--ease-out), border-color .25s var(--ease-out);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-sm);
+  transition: transform .35s var(--ease-out),
+              box-shadow .35s var(--ease-out),
+              border-color .35s var(--ease-out);
 }
 
 .card.featured {
@@ -39,12 +45,16 @@
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 24px 50px -20px rgba(0,76,115,.22),
-              0 8px 16px -8px rgba(0,76,115,.12);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-lg);
 }
 .card.featured:hover {
-  box-shadow: 0 40px 70px -30px rgba(0,76,115,.5);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 40px 70px -30px rgba(0, 76, 115, .55);
 }
 .card.featured:hover::after {
   opacity: 1;
@@ -74,22 +84,39 @@
 }
 
 .ico {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  background: var(--cream);
+  background:
+    linear-gradient(180deg,
+      rgba(0, 174, 239, 0.10) 0%,
+      rgba(0, 174, 239, 0.04) 100%);
   color: var(--cyan-deep);
   border-radius: var(--r-md);
-  transition: transform .25s var(--ease-out), background .25s var(--ease-out), color .25s var(--ease-out);
+  border: 1px solid rgba(0, 174, 239, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: transform .35s var(--ease-out), background .35s var(--ease-out), color .35s var(--ease-out), border-color .35s var(--ease-out);
 }
-.ico svg { width: 22px; height: 22px; }
+.ico svg { width: 24px; height: 24px; }
 .card.featured .ico {
-  background: rgba(255,255,255,.18);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
-  border: 1px solid rgba(255,255,255,.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
-.card:hover .ico { transform: rotate(-4deg) scale(1.05); }
+.card:hover .ico {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(180deg,
+      rgba(0, 174, 239, 0.16) 0%,
+      rgba(0, 174, 239, 0.06) 100%);
+  border-color: rgba(0, 174, 239, 0.3);
+}
+.card.featured:hover .ico {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.42);
+}
 
 .h3 {
   font-family: var(--font-display);
@@ -110,22 +137,22 @@
 }
 .card.featured .p { color: rgba(255,255,255,.88); font-size: 15.5px; }
 
-/* Number watermark on hover */
+/* Number watermark on hover — subtler, doesn't compete with the title */
 .numWatermark {
   position: absolute;
-  bottom: -12px;
-  right: 14px;
+  bottom: -8px;
+  right: 16px;
   font-family: var(--font-display);
-  font-size: clamp(64px, 7vw, 96px);
-  font-weight: 900;
+  font-size: clamp(54px, 6vw, 80px);
+  font-weight: 800;
   letter-spacing: -.04em;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--rule);
+  -webkit-text-stroke: 1px rgba(0, 76, 115, 0.09);
   pointer-events: none;
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+  transform: translateY(10px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
   z-index: 0;
 }
 @media (hover: hover) {

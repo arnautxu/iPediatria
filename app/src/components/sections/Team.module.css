@@ -1,19 +1,38 @@
+/* ============================================================
+   Team — portraits with photo or premium monogram placeholders.
+   Real photo and placeholders share the same aspect/shadow/hover
+   so the grid reads as a coherent set, not a hybrid.
+   ============================================================ */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: var(--s-6);
+  margin-top: var(--s-8);
 }
 
 .card {
-  background: rgba(255,255,255,.7);
-  border: 1px solid rgba(255,255,255,.85);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(245, 250, 253, 0.65) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: var(--r-lg);
   overflow: hidden;
-  transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-sm);
+  transition:
+    transform .35s var(--ease-out),
+    box-shadow .35s var(--ease-out),
+    border-color .35s var(--ease-out);
 }
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 30px 50px -22px rgba(0,76,115,.22);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-lg);
 }
 
 .portrait {
@@ -22,12 +41,36 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  isolation: isolate;
 }
-.portrait.cyan { background: linear-gradient(160deg, var(--cyan), var(--cyan-deep)); }
-.portrait.mag  { background: linear-gradient(160deg, var(--magenta), var(--magenta-deep)); }
-.portrait.ink  { background: linear-gradient(160deg, var(--ink-hover), var(--ink-deep)); }
+.portrait.cyan {
+  background:
+    radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 55%),
+    linear-gradient(160deg, var(--cyan), var(--cyan-deep));
+}
+.portrait.mag {
+  background:
+    radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, 0.22) 0%, transparent 55%),
+    linear-gradient(160deg, var(--magenta), var(--magenta-deep));
+}
+.portrait.ink {
+  background:
+    radial-gradient(120% 100% at 20% 0%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+    linear-gradient(160deg, var(--ink-hover), var(--ink-deep));
+}
 
-/* Photo variant — fills the portrait, gentle zoom on hover */
+/* SVG noise grain for the placeholder — gives the gradient material */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Photo variant */
 .photo {
   width: 100%;
   height: 100%;
@@ -35,12 +78,62 @@
   object-position: center 22%;
   transition: transform .6s var(--ease-out), filter .4s var(--ease-out);
   filter: saturate(1.02);
+  z-index: 0;
 }
 .card:hover .photo {
   transform: scale(1.04);
   filter: saturate(1.08);
 }
-/* When a photo is present, the index badge needs stronger contrast */
+
+/* Monogram for the placeholder */
+.initials {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(64px, 6.5vw, 96px);
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.18),
+    0 0 24px rgba(255, 255, 255, 0.12);
+  line-height: 1;
+}
+
+/* "Foto disponible aviat" ribbon */
+.soonBadge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: var(--r-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Index badge — top-right of every portrait */
+.idx {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+  background: rgba(0, 0, 0, 0.15);
+}
 .hasPhoto .idx {
   background: rgba(0, 0, 0, 0.32);
   border-color: rgba(255, 255, 255, 0.5);
@@ -48,39 +141,17 @@
   -webkit-backdrop-filter: blur(6px);
 }
 
-.initials {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(54px, 6vw, 88px);
-  letter-spacing: -.04em;
-  color: rgba(255,255,255,.95);
-  text-shadow: 0 2px 8px rgba(0,0,0,.12);
-}
-
-.idx {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .12em;
-  color: rgba(255,255,255,.7);
-  border: 1px solid rgba(255,255,255,.35);
-  border-radius: var(--r-pill);
-  padding: 3px 10px;
-}
-
 .body {
-  padding: 22px 22px 26px;
+  padding: var(--s-6);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--s-2);
 }
 
 .role {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 500;
@@ -90,13 +161,14 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(19px, 1.55vw, 23px);
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   color: var(--ink);
+  margin: 0;
 }
 
 .bio {
-  margin-top: 8px;
+  margin-top: var(--s-2);
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--ink-2);
